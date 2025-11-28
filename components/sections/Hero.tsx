@@ -11,10 +11,10 @@ interface HeroProps {
 
 export function Hero({ imageUrl }: HeroProps) {
   return (
-    // ALTERAÇÃO CRÍTICA AQUI:
-    // Mudamos pt-28 para pt-4 no mobile.
-    // Isso sobe todo o conteúdo já que a navbar não está mais lá ocupando espaço.
-    <section className="relative min-h-[95vh] lg:min-h-screen flex items-center justify-center bg-gradient-to-b from-[#0e2432] to-[#1a4056] overflow-hidden pt-4 lg:pt-16 pb-12">
+    // ALTERAÇÃO DE LAYOUT:
+    // Voltamos o padding-top (pt) para pt-24 ou pt-32.
+    // Como a navbar agora é fixa (sobre o conteúdo), precisamos empurrar o conteúdo para baixo.
+    <section className="relative min-h-[95vh] lg:min-h-screen flex items-center justify-center bg-gradient-to-b from-[#0e2432] to-[#1a4056] overflow-hidden pt-24 pb-12 lg:pt-0">
       {/* Elementos de Fundo Animados */}
       <div className="absolute inset-0 opacity-5 pointer-events-none">
         <motion.div
@@ -44,7 +44,7 @@ export function Hero({ imageUrl }: HeroProps) {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col justify-center">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* FOTO DO MÉDICO */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -52,7 +52,7 @@ export function Hero({ imageUrl }: HeroProps) {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="relative order-1 lg:order-2 flex justify-center mt-4 lg:mt-0"
           >
-            {/* Anel animado - Reduzido opacidade para não brigar com a foto */}
+            {/* Anel animado */}
             <motion.div
               className="absolute inset-0 rounded-full bg-gradient-to-tr from-teal-500 via-amber-500 to-teal-500 blur-2xl opacity-20"
               animate={{ rotate: 360 }}
@@ -61,8 +61,7 @@ export function Hero({ imageUrl }: HeroProps) {
 
             {/* Container da foto */}
             <motion.div
-              // Reduzi um pouco o max-w no mobile para garantir que caiba em telas menores (iPhone SE, etc)
-              className="relative aspect-square w-[70vw] max-w-[260px] sm:max-w-md lg:max-w-lg rounded-3xl overflow-hidden shadow-2xl border-4 border-white/10"
+              className="relative aspect-square w-[70vw] max-w-[280px] sm:max-w-md lg:max-w-lg rounded-3xl overflow-hidden shadow-2xl border-4 border-white/10"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
             >

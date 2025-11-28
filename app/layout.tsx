@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-// Mantendo as fontes originais
 import { Montserrat, Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
-import Script from "next/script"; // Importação necessária para o JSON-LD
+import Script from "next/script";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -15,7 +14,6 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
-// URL base do site (Substitua pela URL de produção real quando tiver)
 const BASE_URL =
   process.env.NEXT_PUBLIC_SITE_URL || "https://drjohnrocha.com.br";
 
@@ -27,15 +25,22 @@ export const metadata: Metadata = {
     template: "%s | Dr. John Rocha",
   },
   description:
-    "Dr. John Rocha é neurocirurgião especializado em cirurgia endoscópica da coluna, tratamento da dor e neurocirurgia craniana. Atendimento em Recife, João Pessoa e Campina Grande.",
+    "Dr. John Rocha é neurocirurgião especialista no tratamento de hérnia de disco, dor no nervo ciático e cirurgias minimamente invasivas em Recife e João Pessoa.",
+  // SEO ATUALIZADO: Focando em como o paciente pesquisa
   keywords: [
     "Neurocirurgião",
     "Cirurgia de Coluna",
     "Endoscopia de Coluna",
     "Hérnia de Disco",
     "Tratamento da Dor",
+    "Dor no nervo ciático", // Novo
+    "Dor na lombar", // Novo
+    "Cirurgia minimamente invasiva", // Novo
+    "Especialista em dor crônica", // Novo
+    "Bloqueio da dor", // Novo
     "Neurocirurgia Recife",
     "Neurocirurgia João Pessoa",
+    "Neurocirurgião Campina Grande",
     "Dr. John Rocha",
   ],
   authors: [{ name: "Dr. John Rocha" }],
@@ -46,7 +51,6 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  // Configuração para compartilhamento social (WhatsApp, Instagram, LinkedIn)
   openGraph: {
     title: "Dr. John Rocha | Neurocirurgião Especialista",
     description:
@@ -57,14 +61,13 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/professional-neurosurgeon-portrait.jpg", // A foto principal que já usamos
+        url: "/professional-neurosurgeon-portrait.jpg",
         width: 1200,
         height: 630,
         alt: "Dr. John Rocha - Neurocirurgião",
       },
     ],
   },
-  // Configuração para Twitter/X
   twitter: {
     card: "summary_large_image",
     title: "Dr. John Rocha | Neurocirurgião",
@@ -87,8 +90,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Estrutura de dados para o Google (Schema.org)
-  // Isso ajuda o Google a entender os locais de atendimento e especialidades
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Physician",
@@ -102,7 +103,7 @@ export default function RootLayout({
       "Pain Management",
     ],
     url: BASE_URL,
-    telephone: "+558120114050", // Telefone principal (Recife)
+    telephone: "+558120114050",
     address: [
       {
         "@type": "PostalAddress",
@@ -125,8 +126,7 @@ export default function RootLayout({
     ],
     sameAs: [
       "https://instagram.com/drjohnrocha",
-      "https://facebook.com/drjohnrocha", // Adicione se existir
-      // "https://www.linkedin.com/in/..." // Adicione se existir
+      "https://facebook.com/drjohnrocha",
     ],
     priceRange: "$$$",
   };
@@ -136,7 +136,6 @@ export default function RootLayout({
       <body
         className={`${montserrat.variable} ${inter.variable} font-sans antialiased`}
       >
-        {/* Injeção do JSON-LD */}
         <Script
           id="schema-jsonld"
           type="application/ld+json"

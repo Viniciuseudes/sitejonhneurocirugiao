@@ -68,14 +68,13 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 var __TURBOPACK__imported__module__$5b$next$5d2f$internal$2f$font$2f$google$2f$montserrat_bba129a6$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[next]/internal/font/google/montserrat_bba129a6.js [app-rsc] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$next$5d2f$internal$2f$font$2f$google$2f$inter_5901b7c6$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[next]/internal/font/google/inter_5901b7c6.js [app-rsc] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$vercel$2f$analytics$2f$dist$2f$next$2f$index$2e$mjs__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/@vercel/analytics/dist/next/index.mjs [app-rsc] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$script$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/script.js [app-rsc] (ecmascript)"); // Importação necessária para o JSON-LD
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$script$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/script.js [app-rsc] (ecmascript)");
 ;
 ;
 ;
 ;
 ;
 ;
-// URL base do site (Substitua pela URL de produção real quando tiver)
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://drjohnrocha.com.br";
 const metadata = {
     metadataBase: new URL(BASE_URL),
@@ -83,15 +82,22 @@ const metadata = {
         default: "Dr. John Rocha | Neurocirurgião - Especialista em Coluna, Crânio e Dor",
         template: "%s | Dr. John Rocha"
     },
-    description: "Dr. John Rocha é neurocirurgião especializado em cirurgia endoscópica da coluna, tratamento da dor e neurocirurgia craniana. Atendimento em Recife, João Pessoa e Campina Grande.",
+    description: "Dr. John Rocha é neurocirurgião especialista no tratamento de hérnia de disco, dor no nervo ciático e cirurgias minimamente invasivas em Recife e João Pessoa.",
+    // SEO ATUALIZADO: Focando em como o paciente pesquisa
     keywords: [
         "Neurocirurgião",
         "Cirurgia de Coluna",
         "Endoscopia de Coluna",
         "Hérnia de Disco",
         "Tratamento da Dor",
+        "Dor no nervo ciático",
+        "Dor na lombar",
+        "Cirurgia minimamente invasiva",
+        "Especialista em dor crônica",
+        "Bloqueio da dor",
         "Neurocirurgia Recife",
         "Neurocirurgia João Pessoa",
+        "Neurocirurgião Campina Grande",
         "Dr. John Rocha"
     ],
     authors: [
@@ -106,7 +112,6 @@ const metadata = {
         address: false,
         telephone: false
     },
-    // Configuração para compartilhamento social (WhatsApp, Instagram, LinkedIn)
     openGraph: {
         title: "Dr. John Rocha | Neurocirurgião Especialista",
         description: "Recupere sua qualidade de vida. Especialista em coluna, crânio e dor com técnicas minimamente invasivas.",
@@ -123,7 +128,6 @@ const metadata = {
             }
         ]
     },
-    // Configuração para Twitter/X
     twitter: {
         card: "summary_large_image",
         title: "Dr. John Rocha | Neurocirurgião",
@@ -151,8 +155,6 @@ const metadata = {
     }
 };
 function RootLayout({ children }) {
-    // Estrutura de dados para o Google (Schema.org)
-    // Isso ajuda o Google a entender os locais de atendimento e especialidades
     const jsonLd = {
         "@context": "https://schema.org",
         "@type": "Physician",
@@ -206,13 +208,13 @@ function RootLayout({ children }) {
                     }
                 }, void 0, false, {
                     fileName: "[project]/app/layout.tsx",
-                    lineNumber: 140,
+                    lineNumber: 139,
                     columnNumber: 9
                 }, this),
                 children,
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$vercel$2f$analytics$2f$dist$2f$next$2f$index$2e$mjs__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Analytics"], {}, void 0, false, {
                     fileName: "[project]/app/layout.tsx",
-                    lineNumber: 147,
+                    lineNumber: 146,
                     columnNumber: 9
                 }, this)
             ]
