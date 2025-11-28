@@ -4,13 +4,12 @@ import { useState } from "react";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { Menu, X } from "lucide-react"; // Importe ícones se precisar para mobile, ou mantenha simples
+import Image from "next/image"; // Importação adicionada
 
 export function Navbar() {
   const { scrollY } = useScroll();
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // Lógica: Detectar scroll para mudar a cor, mas NUNCA esconder a barra
   useMotionValueEvent(scrollY, "change", (latest) => {
     if (latest > 20) {
       setIsScrolled(true);
@@ -21,24 +20,27 @@ export function Navbar() {
 
   return (
     <motion.nav
-      // Removemos a animação de esconder (y: -100). Agora ela é fixa.
       initial={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm py-2" // Estilo ao rolar (Fundo Branco)
-          : "bg-transparent border-transparent py-4" // Estilo no topo (Transparente)
+          ? "bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm py-2"
+          : "bg-transparent border-transparent py-4"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-12">
-          {/* Logo: Muda de cor para garantir contraste */}
-          <div
-            className={`font-serif text-xl font-bold transition-colors ${
-              isScrolled ? "text-[#0e2432]" : "text-white"
-            }`}
-          >
-            Dr. John Rocha
-          </div>
+          {/* ALTERAÇÃO: Logo em Imagem.
+            Ajuste 'w-[180px]' e 'h-[50px]' conforme a proporção da sua logo.
+          */}
+          <Link href="/" className="relative w-[180px] h-[50px]">
+            <Image
+              src="/logo.png"
+              alt="Dr. John Rocha"
+              fill
+              className="object-contain object-left"
+              priority
+            />
+          </Link>
 
           {/* Menu Desktop */}
           <div className="hidden md:flex gap-8">

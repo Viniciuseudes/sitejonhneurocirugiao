@@ -3,6 +3,8 @@ import { Montserrat, Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import Script from "next/script";
 import "./globals.css";
+// 1. IMPORTAÇÃO DO TOASTER
+import { Toaster } from "@/components/ui/toaster";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -26,18 +28,17 @@ export const metadata: Metadata = {
   },
   description:
     "Dr. John Rocha é neurocirurgião especialista no tratamento de hérnia de disco, dor no nervo ciático e cirurgias minimamente invasivas em Recife e João Pessoa.",
-  // SEO ATUALIZADO: Focando em como o paciente pesquisa
   keywords: [
     "Neurocirurgião",
     "Cirurgia de Coluna",
     "Endoscopia de Coluna",
     "Hérnia de Disco",
     "Tratamento da Dor",
-    "Dor no nervo ciático", // Novo
-    "Dor na lombar", // Novo
-    "Cirurgia minimamente invasiva", // Novo
-    "Especialista em dor crônica", // Novo
-    "Bloqueio da dor", // Novo
+    "Dor no nervo ciático",
+    "Dor na lombar",
+    "Cirurgia minimamente invasiva",
+    "Especialista em dor crônica",
+    "Bloqueio da dor",
     "Neurocirurgia Recife",
     "Neurocirurgia João Pessoa",
     "Neurocirurgião Campina Grande",
@@ -143,6 +144,10 @@ export default function RootLayout({
         />
 
         {children}
+
+        {/* 2. COMPONENTE TOASTER ADICIONADO */}
+        <Toaster />
+
         <Analytics />
       </body>
     </html>

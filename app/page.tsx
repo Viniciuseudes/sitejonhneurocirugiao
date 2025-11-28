@@ -6,17 +6,22 @@ import { About } from "@/components/sections/About";
 import { Locations } from "@/components/sections/Locations";
 import { Education } from "@/components/sections/Education";
 import { Footer } from "@/components/sections/Footer";
+// 1. IMPORTAR A SEÇÃO DE VÍDEOS
+import { Videos } from "@/components/sections/Videos";
 import { supabase } from "@/lib/supabase";
 
-// ALTERAÇÃO AQUI: Mudamos de 60 para 0.
-// Isso diz ao Next.js para NÃO fazer cache e buscar a imagem nova a cada visita.
 export const revalidate = 0;
 
 export default async function Home() {
-  // Buscar imagens do Supabase
+  // Buscar imagens
   const { data: config } = await supabase.from("site_config").select("*");
 
-  // Lógica para extrair as URLs ou usar o padrão se não encontrar
+  // 2. BUSCAR OS VÍDEOS NO BANCO
+  const { data: videos } = await supabase
+    .from("videos")
+    .select("*")
+    .order("created_at", { ascending: false });
+
   const heroImage =
     config?.find((item) => item.key === "hero_image")?.image_url ||
     "/professional-neurosurgeon-portrait.jpg";
@@ -31,11 +36,14 @@ export default async function Home() {
       <Navbar />
 
       <main>
-        {/* Passamos as URLs dinâmicas como props para os componentes */}
         <Hero imageUrl={heroImage} />
         <About imageUrl={aboutImage} />
         <Specialties />
         <Locations />
+
+        {/* 3. EXIBIR A SEÇÃO DE VÍDEOS (Passando os dados) */}
+        <Videos videos={videos || []} />
+
         <Education />
       </main>
 

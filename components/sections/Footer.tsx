@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image"; // Importação adicionada
 import {
   Instagram,
   Linkedin,
@@ -28,9 +29,18 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Coluna 1: Sobre a Marca */}
           <div className="space-y-6">
-            <div className="font-serif text-2xl font-bold text-white">
-              Dr. John Rocha
+            {/* ALTERAÇÃO: Logo em Imagem no Footer.
+               Aumentei um pouco para w-[200px] para destaque.
+            */}
+            <div className="relative w-[200px] h-[60px]">
+              <Image
+                src="/logo.png"
+                alt="Dr. John Rocha"
+                fill
+                className="object-contain object-left"
+              />
             </div>
+
             <p className="text-sm leading-relaxed text-gray-400">
               Neurocirurgião especializado em técnicas minimamente invasivas.
               Compromisso com a excelência médica e a recuperação da sua
