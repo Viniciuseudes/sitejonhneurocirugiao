@@ -2,7 +2,15 @@
 
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
-import { Brain, Stethoscope, Activity, Heart } from "lucide-react";
+import {
+  Brain,
+  Stethoscope,
+  Activity,
+  Timer,
+  Target,
+  Sparkles,
+  ShieldCheck,
+} from "lucide-react";
 import Image from "next/image";
 
 const fadeInUp = {
@@ -14,219 +22,201 @@ export function Specialties() {
   return (
     <section
       id="especialidades"
-      className="py-24 bg-gradient-to-b from-[#1e4a64] to-[#2a5c78] relative overflow-hidden"
+      className="py-16 lg:py-24 bg-gradient-to-b from-[#0f293a] to-[#1a4056] relative overflow-hidden"
     >
-      {/* Background pattern */}
-      <div className="absolute inset-0 opacity-5">
+      {/* Background sofisticado e sutil */}
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`,
-            backgroundSize: "40px 40px",
+            backgroundImage: `linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)`,
+            backgroundSize: "60px 60px",
           }}
         />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Cabeçalho da Seção - Mais compacto */}
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
           variants={fadeInUp}
-          className="text-center mb-16"
+          className="text-center mb-12 lg:mb-16"
         >
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 text-balance">
-            Por que escolher a cirurgia endoscópica da coluna?
+          <div className="inline-block px-4 py-1.5 bg-teal-500/10 rounded-full mb-4 border border-teal-500/20">
+            <span className="text-teal-400 text-xs font-bold tracking-widest uppercase">
+              Tecnologia Minimamente Invasiva
+            </span>
+          </div>
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 text-balance font-serif">
+            Cirurgia Endoscópica da Coluna
           </h2>
-          <p className="text-lg text-gray-200 max-w-2xl mx-auto text-pretty">
-            Veja os principais benefícios desse tratamento moderno e eficaz:
+          <p className="text-base md:text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            Abordagem moderna que preserva a anatomia, proporcionando resultados
+            superiores com o mínimo de agressão ao corpo.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* 3D Spine Visualization */}
+        {/* Conteúdo Principal: Imagem + Benefícios - Gap reduzido para harmonia */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center mb-16 lg:mb-20">
+          {/* Visualização 3D */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="relative"
+            className="relative order-2 lg:order-1"
           >
-            <div className="aspect-square bg-gradient-to-br from-[#1a3a4f]/50 to-[#0e2432]/50 rounded-3xl backdrop-blur-sm border border-white/10 flex items-center justify-center overflow-hidden">
-              {/* Animated spine visualization - Container Relativo para o Image */}
-              <div className="relative w-full h-full p-8">
+            <div className="aspect-square relative z-10 max-w-md mx-auto lg:max-w-full">
+              <div className="absolute inset-0 bg-gradient-to-tr from-teal-500/20 to-amber-500/20 rounded-full blur-3xl opacity-30" />
+              <div className="relative w-full h-full p-4 drop-shadow-2xl">
+                {/* Certifique-se de que a imagem gerada esteja aqui */}
                 <Image
-                  src="/3d-medical-spine-column-anatomy-vertebrae-glowing-.jpg"
-                  alt="Coluna vertebral 3D"
+                  src="/coluna2.jpg"
+                  alt="Anatomia da Coluna Vertebral 3D"
                   fill
                   className="object-contain"
                 />
               </div>
 
-              {/* Glowing points on spine */}
-              <motion.div
-                className="absolute top-1/4 left-1/2 w-4 h-4 bg-teal-400 rounded-full blur-sm"
-                animate={{
-                  scale: [1, 1.5, 1],
-                  opacity: [0.6, 1, 0.6],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Number.POSITIVE_INFINITY,
-                  ease: "easeInOut",
-                }}
-              />
-              <motion.div
-                className="absolute top-1/2 left-1/2 w-4 h-4 bg-teal-400 rounded-full blur-sm"
-                animate={{
-                  scale: [1, 1.5, 1],
-                  opacity: [0.6, 1, 0.6],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Number.POSITIVE_INFINITY,
-                  ease: "easeInOut",
-                  delay: 0.5,
-                }}
-              />
-              <motion.div
-                className="absolute top-2/3 left-1/2 w-4 h-4 bg-teal-400 rounded-full blur-sm"
-                animate={{
-                  scale: [1, 1.5, 1],
-                  opacity: [0.6, 1, 0.6],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Number.POSITIVE_INFINITY,
-                  ease: "easeInOut",
-                  delay: 1,
-                }}
-              />
+              {/* Pontos de destaque animados (Mais sutis) */}
+              {[30, 50, 70].map((top, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute left-[48%] w-2 h-2 bg-teal-400 rounded-full shadow-[0_0_15px_rgba(45,212,191,0.8)]"
+                  style={{ top: `${top}%` }}
+                  animate={{ scale: [1, 1.3, 1], opacity: [0.5, 1, 0.5] }}
+                  transition={{ duration: 3, repeat: Infinity, delay: i * 0.8 }}
+                />
+              ))}
             </div>
           </motion.div>
 
-          {/* Benefits List - Restaurada completa */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="space-y-6"
-          >
+          {/* Lista de Benefícios - Layout ajustado */}
+          <div className="space-y-5 lg:space-y-6 order-1 lg:order-2">
             {[
               {
-                icon: "🏃",
-                title: "Recuperação mais rápida",
+                icon: Timer,
+                title: "Recuperação Acelerada",
                 description:
-                  "Alta no mesmo dia, com retorno precoce às atividades do dia a dia.",
+                  "Alta hospitalar geralmente no mesmo dia, com retorno rápido ao conforto do lar.",
               },
               {
-                icon: "💚",
-                title: "Menos dor pós-operatória",
+                icon: ShieldCheck,
+                title: "Trauma Reduzido",
                 description:
-                  "Procedimento minimamente invasivo reduz o trauma e o desconforto.",
+                  "Preservação da musculatura e estruturas ósseas, resultando em muito menos dor.",
               },
               {
-                icon: "🎯",
-                title: "Segurança e precisão",
+                icon: Target,
+                title: "Alta Precisão",
                 description:
-                  "Visualização direta da lesão com mínima manipulação dos tecidos.",
+                  "Visualização em alta definição (4K) da patologia para segurança máxima.",
               },
               {
-                icon: "✨",
-                title: "Estética e conforto",
+                icon: Sparkles,
+                title: "Estética Superior",
                 description:
-                  "Incisões pequenas, sem pontos visíveis e cicatriz mais discreta.",
+                  "Incisões menores que 1cm, sem pontos externos e cicatrizes quase invisíveis.",
               },
-            ].map((benefit, index) => (
+            ].map((item, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="flex items-start gap-4 bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300"
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="group flex gap-4 p-4 rounded-xl hover:bg-white/5 transition-colors duration-300 border border-transparent hover:border-white/5"
               >
-                <div className="text-4xl flex-shrink-0">{benefit.icon}</div>
+                <div className="flex-shrink-0">
+                  <div className="w-10 h-10 rounded-lg bg-teal-500/10 border border-teal-500/20 flex items-center justify-center group-hover:bg-teal-500/20 transition-colors duration-300">
+                    <item.icon className="w-5 h-5 text-teal-400" />
+                  </div>
+                </div>
                 <div>
-                  <h3 className="text-xl font-bold text-white mb-2">
-                    {benefit.title}
+                  <h3 className="text-lg font-bold text-white mb-1 group-hover:text-teal-300 transition-colors">
+                    {item.title}
                   </h3>
-                  <p className="text-gray-200 leading-relaxed">
-                    {benefit.description}
+                  <p className="text-gray-400 text-sm leading-relaxed">
+                    {item.description}
                   </p>
                 </div>
               </motion.div>
             ))}
-          </motion.div>
+          </div>
         </div>
 
-        {/* Additional Specialties Grid - Restaurado completo */}
+        {/* Grid de Outras Especialidades - Aproximado do conteúdo acima */}
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
+          transition={{ duration: 0.6 }}
           variants={fadeInUp}
-          className="mt-20"
+          className="mt-12 lg:mt-16 border-t border-white/10 pt-12 lg:pt-16"
         >
-          <h3 className="text-2xl md:text-4xl font-bold text-white text-center mb-12">
-            Outras Especialidades de Alta Complexidade
-          </h3>
+          <div className="text-center mb-10">
+            <h3 className="text-xl font-bold text-white uppercase tracking-wider mb-2">
+              Áreas de Atuação Complexa
+            </h3>
+            <p className="text-gray-400 text-sm">
+              Outros procedimentos realizados com excelência
+            </p>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
             {[
               {
                 icon: Activity,
-                title: "Cirurgia da Coluna por Vídeo",
-                description:
-                  "Procedimentos minimamente invasivos com recuperação mais rápida",
-                color: "from-teal-500 to-cyan-600",
+                title: "Cirurgia de Coluna",
+                desc: "Hérnias e deformidades.",
+                color: "text-teal-400",
+                bg: "bg-teal-400/10",
+                border: "border-teal-400/20",
               },
               {
                 icon: Stethoscope,
-                title: "Endoscopia de Coluna",
-                description: "Técnica avançada com menor trauma cirúrgico",
-                color: "from-blue-500 to-indigo-600",
+                title: "Endoscopia",
+                desc: "Técnica ultra moderna.",
+                color: "text-blue-400",
+                bg: "bg-blue-400/10",
+                border: "border-blue-400/20",
               },
               {
                 icon: Brain,
-                title: "Neurocirurgia Craniana",
-                description:
-                  "Cirurgias de alta complexidade do sistema nervoso central",
-                color: "from-purple-500 to-pink-600",
+                title: "Neurocirurgia",
+                desc: "Tumores e crânio.",
+                color: "text-purple-400",
+                bg: "bg-purple-400/10",
+                border: "border-purple-400/20",
               },
               {
-                icon: Heart,
-                title: "Tratamento da Dor",
-                description:
-                  "Abordagens modernas para alívio e qualidade de vida",
-                color: "from-amber-500 to-orange-600",
+                icon: ShieldCheck,
+                title: "Controle da Dor",
+                desc: "Infiltrações e terapias.",
+                color: "text-amber-400",
+                bg: "bg-amber-400/10",
+                border: "border-amber-400/20",
               },
-            ].map((specialty, index) => (
+            ].map((spec, index) => (
               <motion.div
                 key={index}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                variants={fadeInUp}
-                whileHover={{ y: -8 }}
+                whileHover={{ y: -4 }}
+                className={`p-5 rounded-xl bg-white/5 border ${spec.border} backdrop-blur-sm hover:bg-white/10 transition-all duration-300`}
               >
-                <Card className="p-6 h-full bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all duration-300 group">
+                <div className="flex items-center gap-3 mb-2">
                   <div
-                    className={`w-14 h-14 bg-gradient-to-br ${specialty.color} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}
+                    className={`w-8 h-8 ${spec.bg} rounded-md flex items-center justify-center`}
                   >
-                    <specialty.icon className="w-7 h-7 text-white" />
+                    <spec.icon className={`w-4 h-4 ${spec.color}`} />
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-3">
-                    {specialty.title}
-                  </h3>
-                  <p className="text-gray-200 leading-relaxed">
-                    {specialty.description}
-                  </p>
-                </Card>
+                  <h4 className="text-base font-bold text-white">
+                    {spec.title}
+                  </h4>
+                </div>
+                <p className="text-xs text-gray-400 pl-11">{spec.desc}</p>
               </motion.div>
             ))}
           </div>
