@@ -1,14 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
+import { useState } from "react";
 import { Play } from "lucide-react";
+import Image from "next/image";
+import { cn } from "@/lib/utils"; // Utilitário padrão do shadcn
 
 interface Video {
   id: number;
@@ -20,97 +15,127 @@ interface VideosProps {
   videos: Video[];
 }
 
-export function Videos({ videos }: VideosProps) {
-  if (!videos || videos.length === 0) return null;
+function VideoCard({ video }: { video: Video }) {
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  // URL da thumbnail (tenta pegar a de alta resolução)
+  const thumbnailUrl = `https://img.youtube.com/vi/${video.youtube_id}/maxresdefault.jpg`;
 
   return (
-    <section
-      id="conteudos"
-      className="py-24 bg-[#0e2432] text-white relative overflow-hidden"
+    <div
+      className={cn(
+        "relative group overflow-hidden rounded-2xl bg-black shadow-lg hover:shadow-2xl transition-all duration-300",
+        "aspect-[9/16]" // FORÇA O FORMATO SHORTS (Vertical)
+      )}
     >
-      {/* Background Decorativo */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-10">
-        <div className="absolute -top-[20%] -right-[10%] w-[500px] h-[500px] bg-teal-500 rounded-full blur-[120px]" />
-        <div className="absolute -bottom-[20%] -left-[10%] w-[500px] h-[500px] bg-amber-500 rounded-full blur-[120px]" />
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+      {isPlaying ? (
+        // --- PLAYER DO YOUTUBE (AutoPlay) ---
+        <iframe
+          className="w-full h-full absolute inset-0"
+          src={`https://www.youtube.com/embed/${video.youtube_id}?autoplay=1&rel=0&modestbranding=1&controls=1&showinfo=0&loop=1`}
+          title={video.title || "Shorts Video"}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        />
+      ) : (
+        // --- CAPA DO SHORTS (Estilo App) ---
+        <div
+          className="w-full h-full cursor-pointer relative"
+          onClick={() => setIsPlaying(true)}
         >
-          <div className="inline-block px-4 py-1.5 bg-teal-500/10 rounded-full mb-4 border border-teal-500/20">
-            <span className="text-teal-400 text-sm font-semibold tracking-wide">
-              CONTEÚDOS EXCLUSIVOS
+          {/* Imagem de Fundo (Cobre tudo) */}
+          <Image
+            src={thumbnailUrl}
+            alt={video.title || "Vídeo thumbnail"}
+            fill
+            className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-90 group-hover:opacity-100"
+            onError={(e) => {
+              const target = e.target as HTMLImageElement;
+              target.src = `https://img.youtube.com/vi/${video.youtube_id}/hqdefault.jpg`;
+            }}
+          />
+
+          {/* Gradiente Escuro no Fundo (Para ler o texto) */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80" />
+
+          {/* Botão de Play Centralizado */}
+          <div className="absolute inset-0 flex items-center justify-center z-10">
+            <div className="w-14 h-14 bg-white/20 backdrop-blur-sm border border-white/40 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-xl">
+              <Play className="w-6 h-6 text-white fill-white ml-1" />
+            </div>
+          </div>
+
+          {/* Informações na parte inferior (Estilo TikTok/Reels) */}
+          <div className="absolute bottom-0 left-0 right-0 p-4 z-20">
+            <div className="flex items-center gap-2 mb-2">
+              <div className="w-6 h-6 rounded-full bg-teal-500 flex items-center justify-center text-[10px] text-white font-bold">
+                Dr
+              </div>
+              <span className="text-xs text-teal-300 font-medium uppercase tracking-wider">
+                Jonh
+              </span>
+            </div>
+            <h3 className="text-white font-semibold text-sm md:text-base leading-snug line-clamp-3 mb-1">
+              {video.title || "Assista a este vídeo explicativo"}
+            </h3>
+            <p className="text-gray-400 text-xs">Toque para assistir</p>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+export function Videos({ videos }: VideosProps) {
+  if (!videos || videos.length === 0) {
+    return null;
+  }
+
+  return (
+    <section className="py-24 bg-white" id="conteudos">
+      <div className="container mx-auto px-4 max-w-6xl">
+        {/* Cabeçalho */}
+        <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6 border-b border-gray-100 pb-8">
+          <div className="max-w-2xl">
+            <span className="text-teal-600 font-bold tracking-widest text-sm uppercase mb-2 block">
+              Galeria de Mídia
             </span>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#0e2432] mb-4">
+              Conteúdos Rápidos (Shorts)
+            </h2>
+            <p className="text-gray-600 text-lg">
+              Vídeos curtos e diretos sobre as principais dúvidas de
+              neurocirurgia e coluna.
+            </p>
           </div>
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">
-            Acompanhe no <span className="text-teal-400">YouTube</span>
-          </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-            Dicas rápidas, explicações sobre cirurgias e orientações para sua
-            saúde em formato Shorts.
-          </p>
-        </motion.div>
 
-        <Carousel
-          opts={{
-            align: "start",
-            loop: true,
-          }}
-          className="w-full"
-        >
-          <CarouselContent className="-ml-4">
-            {videos.map((video) => (
-              <CarouselItem
-                key={video.id}
-                className="pl-4 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4"
-              >
-                <div className="relative group aspect-[9/16] rounded-2xl overflow-hidden border border-white/10 bg-black/40 shadow-2xl">
-                  {/* Thumbnail do YouTube de Alta Qualidade */}
-                  <img
-                    src={`https://img.youtube.com/vi/${video.youtube_id}/maxresdefault.jpg`}
-                    alt={video.title || "Vídeo Dr. John Rocha"}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100"
-                  />
+          {/* Botão decorativo ou link para canal */}
+          <a
+            href="https://youtube.com/@SeuCanal"
+            target="_blank"
+            className="hidden md:flex items-center font-medium text-[#0e2432] hover:text-teal-600 transition-colors"
+          >
+            Ver canal completo &rarr;
+          </a>
+        </div>
 
-                  {/* Overlay Gradiente */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-90" />
+        {/* Grid Responsivo Focado em Vertical */}
+        {/* Mobile: 2 colunas (como Instagram) | Desktop: 4 colunas */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+          {videos.map((video) => (
+            <VideoCard key={video.id} video={video} />
+          ))}
+        </div>
 
-                  {/* Botão Play (Aparece no Hover) */}
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center shadow-lg transform scale-50 group-hover:scale-100 transition-transform duration-300">
-                      <Play className="w-8 h-8 text-white fill-white ml-1" />
-                    </div>
-                  </div>
-
-                  {/* Título e Link */}
-                  <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                    <h3 className="text-white font-bold text-lg leading-tight mb-2 line-clamp-2">
-                      {video.title}
-                    </h3>
-                    <a
-                      href={`https://www.youtube.com/watch?v=${video.youtube_id}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center text-sm text-teal-400 font-medium hover:text-teal-300"
-                    >
-                      Assistir Agora
-                      <Play className="w-3 h-3 ml-2" />
-                    </a>
-                  </div>
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <div className="flex justify-center gap-4 mt-8">
-            <CarouselPrevious className="static translate-y-0 bg-white/5 border-white/10 hover:bg-teal-500 hover:text-white hover:border-teal-500" />
-            <CarouselNext className="static translate-y-0 bg-white/5 border-white/10 hover:bg-teal-500 hover:text-white hover:border-teal-500" />
-          </div>
-        </Carousel>
+        <div className="mt-12 text-center md:hidden">
+          <a
+            href="https://youtube.com/@SeuCanal"
+            target="_blank"
+            className="inline-flex items-center font-medium text-teal-600 border border-teal-600 px-6 py-3 rounded-full hover:bg-teal-50 transition-colors"
+          >
+            Ver todos os vídeos
+          </a>
+        </div>
       </div>
     </section>
   );

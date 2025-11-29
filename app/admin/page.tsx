@@ -29,18 +29,19 @@ import {
   Image as ImageIcon,
   Save,
   Crop as CropIcon,
-  Video, // Import Novo
-  Plus, // Import Novo
-  Trash2, // Import Novo
-  ExternalLink, // Import Novo
+  Video,
+  Plus,
+  Trash2,
+  ExternalLink,
 } from "lucide-react";
 import Image from "next/image";
 import Cropper from "react-easy-crop";
 import getCroppedImg from "@/lib/cropImage";
 
-// Função auxiliar para pegar ID do Youtube
+// --- CORREÇÃO AQUI: Regex atualizado para aceitar 'shorts/' ---
 const getYoutubeId = (url: string) => {
-  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+  const regExp =
+    /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=|shorts\/)([^#&?]*).*/;
   const match = url.match(regExp);
   return match && match[2].length === 11 ? match[2] : null;
 };
@@ -57,7 +58,7 @@ export default function AdminPage() {
   const [currentHeroUrl, setCurrentHeroUrl] = useState<string | null>(null);
   const [currentAboutUrl, setCurrentAboutUrl] = useState<string | null>(null);
 
-  // VÍDEOS (Novos Estados)
+  // VÍDEOS
   const [videos, setVideos] = useState<any[]>([]);
   const [newVideoUrl, setNewVideoUrl] = useState("");
   const [newVideoTitle, setNewVideoTitle] = useState("");
@@ -82,7 +83,7 @@ export default function AdminPage() {
       setSession(session);
       if (session) {
         fetchCurrentImages();
-        fetchVideos(); // Buscar vídeos ao carregar
+        fetchVideos();
       }
     });
 
@@ -92,7 +93,7 @@ export default function AdminPage() {
       setSession(session);
       if (session) {
         fetchCurrentImages();
-        fetchVideos(); // Buscar vídeos ao logar
+        fetchVideos();
       }
     });
 
@@ -109,7 +110,6 @@ export default function AdminPage() {
     }
   };
 
-  // Buscar Vídeos
   const fetchVideos = async () => {
     const { data } = await supabase
       .from("videos")
@@ -157,12 +157,14 @@ export default function AdminPage() {
       toast({
         variant: "destructive",
         title: "Link inválido",
-        description: "Não conseguimos identificar o ID do vídeo.",
+        description:
+          "Não conseguimos identificar o ID do vídeo (Verifique se é um link do YouTube).",
       });
       return;
     }
 
     setAddingVideo(true);
+    // Tenta inserir no Supabase. Se a tabela não existir, vai dar erro aqui.
     const { error } = await supabase.from("videos").insert({
       youtube_id: youtubeId,
       title: newVideoTitle || "Novo Vídeo",
@@ -172,7 +174,8 @@ export default function AdminPage() {
       toast({
         variant: "destructive",
         title: "Erro ao adicionar",
-        description: error.message,
+        description:
+          error.message || "Verifique se a tabela 'videos' existe no Supabase.",
       });
     } else {
       toast({
@@ -360,7 +363,7 @@ export default function AdminPage() {
           </Button>
         </div>
 
-        {/* --- SEÇÃO DE VÍDEOS (NOVA) --- */}
+        {/* --- SEÇÃO DE VÍDEOS --- */}
         <Card>
           <CardHeader className="bg-[#0e2432] text-white rounded-t-lg">
             <CardTitle className="flex items-center gap-2">

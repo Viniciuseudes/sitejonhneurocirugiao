@@ -34,7 +34,7 @@ export function Navbar() {
           */}
           <Link href="/" className="relative w-[180px] h-[50px]">
             <Image
-              src="/logo.png"
+              src="/logoj.png"
               alt="Dr. John Rocha"
               fill
               className="object-contain object-left"

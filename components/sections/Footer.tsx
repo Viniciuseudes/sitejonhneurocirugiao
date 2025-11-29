@@ -34,7 +34,7 @@ export function Footer() {
             */}
             <div className="relative w-[200px] h-[60px]">
               <Image
-                src="/logo.png"
+                src="/logojb.png"
                 alt="Dr. John Rocha"
                 fill
                 className="object-contain object-left"

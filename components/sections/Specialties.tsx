@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Card } from "@/components/ui/card";
 import {
   Brain,
   Stethoscope,
@@ -61,36 +60,45 @@ export function Specialties() {
 
         {/* Conteúdo Principal: Imagem + Benefícios - Gap reduzido para harmonia */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center mb-16 lg:mb-20">
-          {/* Visualização 3D */}
+          {/* Visualização 3D MODERNA */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="relative order-2 lg:order-1"
+            className="relative order-2 lg:order-1 flex justify-center items-center"
           >
-            <div className="aspect-square relative z-10 max-w-md mx-auto lg:max-w-full">
-              <div className="absolute inset-0 bg-gradient-to-tr from-teal-500/20 to-amber-500/20 rounded-full blur-3xl opacity-30" />
-              <div className="relative w-full h-full p-4 drop-shadow-2xl">
-                {/* Certifique-se de que a imagem gerada esteja aqui */}
+            {/* Container da Imagem com Efeito de Profundidade */}
+            <div className="relative w-full max-w-md aspect-square flex items-center justify-center">
+              {/* 1. Glow de Fundo (Aura Tecnológica) - Substitui a sombra feia */}
+              <div
+                className="absolute inset-0 bg-gradient-to-tr from-teal-500/30 to-blue-600/20 rounded-full blur-[80px] animate-pulse"
+                style={{ animationDuration: "4s" }}
+              />
+
+              {/* 2. Imagem Flutuante (Efeito 3D) */}
+              <motion.div
+                className="relative w-[90%] h-[90%] z-10"
+                animate={{ y: [0, -20, 0] }} // Movimento de levitação
+                transition={{
+                  duration: 6,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                whileHover={{ scale: 1.05, rotateZ: 1 }} // Interatividade 3D ao passar o mouse
+              >
                 <Image
                   src="/coluna2.jpg"
                   alt="Anatomia da Coluna Vertebral 3D"
                   fill
-                  className="object-contain"
+                  className="object-contain drop-shadow-[0_0_30px_rgba(20,184,166,0.3)]" // Sombra suave (brilho) na própria imagem
+                  priority
                 />
-              </div>
+              </motion.div>
 
-              {/* Pontos de destaque animados (Mais sutis) */}
-              {[30, 50, 70].map((top, i) => (
-                <motion.div
-                  key={i}
-                  className="absolute left-[48%] w-2 h-2 bg-teal-400 rounded-full shadow-[0_0_15px_rgba(45,212,191,0.8)]"
-                  style={{ top: `${top}%` }}
-                  animate={{ scale: [1, 1.3, 1], opacity: [0.5, 1, 0.5] }}
-                  transition={{ duration: 3, repeat: Infinity, delay: i * 0.8 }}
-                />
-              ))}
+              {/* Elementos Decorativos Orbitais (Opcional - para mais tech feel sem ser bolinha chata) */}
+              <div className="absolute inset-0 border border-teal-500/10 rounded-full scale-110 pointer-events-none" />
+              <div className="absolute inset-0 border border-white/5 rounded-full scale-125 pointer-events-none border-dashed opacity-50" />
             </div>
           </motion.div>
 
@@ -128,10 +136,10 @@ export function Specialties() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group flex gap-4 p-4 rounded-xl hover:bg-white/5 transition-colors duration-300 border border-transparent hover:border-white/5"
+                className="group flex gap-4 p-4 rounded-xl hover:bg-white/5 transition-colors duration-300 border border-transparent hover:border-white/5 cursor-default"
               >
                 <div className="flex-shrink-0">
-                  <div className="w-10 h-10 rounded-lg bg-teal-500/10 border border-teal-500/20 flex items-center justify-center group-hover:bg-teal-500/20 transition-colors duration-300">
+                  <div className="w-10 h-10 rounded-lg bg-teal-500/10 border border-teal-500/20 flex items-center justify-center group-hover:bg-teal-500/20 transition-colors duration-300 shadow-[0_0_10px_rgba(20,184,166,0.1)]">
                     <item.icon className="w-5 h-5 text-teal-400" />
                   </div>
                 </div>
