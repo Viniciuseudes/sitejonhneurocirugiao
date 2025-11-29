@@ -86,3 +86,53 @@ Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allow
 [02:34:08.174] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
 [02:34:08.174] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
 [02:34:08.175] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764387337392}
+[03:35:56.076] Server  LOG      ✓ Compiled in 390ms
+[03:41:41.972] Server  LOG      ✓ Compiled in 0ms
+[03:41:46.342] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[03:41:46.551] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[03:41:46.551] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[03:41:46.551] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764391395487}
+[03:42:53.487] Server  LOG      ✓ Compiled in 178ms
+[03:42:53.612] Browser ERROR   ./components/sections/Hero.tsx:111:24
+Parsing ecmascript source code failed
+  109 |               >
+  110 |                   Agendar Consulta
+> 111 |                 </Link>
+      |                        ^
+> 112 |               </Button>
+      | ^^^^^^^^^^^^^^^
+  113 |               <Button
+  114 |                 asChild
+  115 |                 size="lg"
+
+Expected '</', got 'jsx text (
+              )'
+
+Import trace:
+  Server Component:
+    ./components/sections/Hero.tsx
+    ./app/page.tsx
+[03:42:54.096] Browser ERROR   ./components/sections/Hero.tsx:111:24
+Parsing ecmascript source code failed
+  109 |               >
+  110 |                   Agendar Consulta
+> 111 |                 </Link>
+      |                        ^
+> 112 |               </Button>
+      | ^^^^^^^^^^^^^^^
+  113 |               <Button
+  114 |                 asChild
+  115 |                 size="lg"
+
+Expected '</', got 'jsx text (
+              )'
+
+Import trace:
+  Server Component:
+    ./components/sections/Hero.tsx
+    ./app/page.tsx
+[03:42:55.903] Server  LOG      ✓ Compiled in 77ms
+[03:44:24.681] Server  LOG      ✓ Compiled in 249ms
+[03:45:38.572] Server  LOG      ✓ Compiled in 70ms
+[03:45:54.345] Server  LOG      ✓ Compiled in 31ms
+[03:47:53.761] Server  LOG      ✓ Compiled in 108ms

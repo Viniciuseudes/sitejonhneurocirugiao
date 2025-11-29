@@ -48,9 +48,10 @@ export function Footer() {
             </p>
             <div className="flex gap-4">
               {[
-                { icon: Instagram, href: "https://instagram.com/drjohnrocha" },
-                { icon: Facebook, href: "#" },
-                { icon: Linkedin, href: "#" },
+                {
+                  icon: Instagram,
+                  href: "https://www.instagram.com/drjohn.neuro/",
+                },
               ].map((social, index) => (
                 <a
                   key={index}
@@ -79,7 +80,7 @@ export function Footer() {
                 { name: "Locais de Atendimento", href: "#locais" },
                 {
                   name: "Agendar Consulta",
-                  href: "https://wa.me/558132421234",
+                  href: "https://wa.me/5583996686436",
                 },
               ].map((link, index) => (
                 <li key={index}>
@@ -144,7 +145,7 @@ export function Footer() {
             </h3>
             <div className="space-y-4">
               <a
-                href="https://wa.me/558132421234"
+                href="https://wa.me/5583996686436"
                 target="_blank"
                 className="flex items-center gap-3 p-3 rounded-lg bg-white/5 border border-white/10 hover:border-teal-500/50 hover:bg-white/10 transition-all group"
               >

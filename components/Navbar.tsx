@@ -1,79 +1,155 @@
 "use client";
 
-import { useState } from "react";
-import { motion, useScroll, useMotionValueEvent } from "framer-motion";
-import { Button } from "@/components/ui/button";
+import * as React from "react";
 import Link from "next/link";
-import Image from "next/image"; // Importação adicionada
+import Image from "next/image";
+import { Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { cn } from "@/lib/utils";
+
+const navLinks = [
+  { name: "Início", href: "#hero" },
+  { name: "Sobre", href: "#about" },
+  { name: "Especialidades", href: "#specialties" },
+  { name: "Conteúdos", href: "#videos" }, // Novo link adicionado
+  { name: "Locais de Atendimento", href: "#locations" },
+];
 
 export function Navbar() {
-  const { scrollY } = useScroll();
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [isScrolled, setIsScrolled] = React.useState(false);
+  const [isOpen, setIsOpen] = React.useState(false);
 
-  useMotionValueEvent(scrollY, "change", (latest) => {
-    if (latest > 20) {
-      setIsScrolled(true);
-    } else {
-      setIsScrolled(false);
+  React.useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 10) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Função para rolar suavemente (opcional, caso o Link do Next não faça nativamente com #ids em alguns browsers)
+  const handleScrollToSection = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    if (href.startsWith("#")) {
+      e.preventDefault();
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+        setIsOpen(false); // Fecha o menu mobile se estiver aberto
+      }
     }
-  });
+  };
 
   return (
-    <motion.nav
-      initial={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+    <header
+      className={cn(
+        "fixed top-0 w-full z-50 transition-all duration-300 border-b",
         isScrolled
-          ? "bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm py-2"
+          ? "bg-white/95 backdrop-blur-md border-gray-200 py-2 shadow-sm"
           : "bg-transparent border-transparent py-4"
-      }`}
+      )}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-12">
-          {/* ALTERAÇÃO: Logo em Imagem.
-            Ajuste 'w-[180px]' e 'h-[50px]' conforme a proporção da sua logo.
-          */}
-          <Link href="/" className="relative w-[180px] h-[50px]">
+      <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
+        {/* Logo Dinâmica */}
+        <Link
+          href="/"
+          className="flex items-center gap-2"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        >
+          <div className="relative h-10 w-40 md:h-12 md:w-48 transition-all">
             <Image
-              src="/logoj.png"
-              alt="Dr. John Rocha"
+              src={isScrolled ? "/logoj.png" : "/logojb.png"}
+              alt="Logo Dr. John"
               fill
               className="object-contain object-left"
               priority
             />
-          </Link>
-
-          {/* Menu Desktop */}
-          <div className="hidden md:flex gap-8">
-            {["Sobre", "Especialidades", "Locais", "Contato"].map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                className={`text-sm font-medium transition-colors hover:text-teal-500 ${
-                  isScrolled ? "text-gray-700" : "text-gray-200"
-                }`}
-              >
-                {item}
-              </a>
-            ))}
           </div>
+        </Link>
 
-          {/* Botão de Ação */}
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            <Button
-              asChild
-              className={`transition-colors ${
-                isScrolled
-                  ? "bg-[#0e2432] hover:bg-[#1a3a4f] text-white"
-                  : "bg-white/10 hover:bg-white/20 text-white backdrop-blur-md border border-white/20"
-              }`}
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center gap-6">
+          {navLinks.map((link) => (
+            <Link
+              key={link.name}
+              href={link.href}
+              onClick={(e) => handleScrollToSection(e, link.href)}
+              className={cn(
+                "text-sm font-medium transition-colors hover:text-primary",
+                isScrolled ? "text-gray-700" : "text-white/90 hover:text-white"
+              )}
             >
-              <Link href="https://wa.me/558132421234" target="_blank">
-                Agendar Consulta
-              </Link>
+              {link.name}
+            </Link>
+          ))}
+
+          {/* Botão Agendar Consulta - Desktop */}
+          <Button
+            variant={isScrolled ? "default" : "secondary"}
+            className={cn(
+              "font-semibold",
+              !isScrolled && "bg-white text-primary hover:bg-white/90"
+            )}
+            asChild
+          >
+            <Link
+              href="https://wa.me/5583996686436"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Agendar Consulta
+            </Link>
+          </Button>
+        </nav>
+
+        {/* Mobile Navigation */}
+        <Sheet open={isOpen} onOpenChange={setIsOpen}>
+          <SheetTrigger asChild>
+            <Button
+              variant="ghost"
+              size="icon"
+              className={cn(
+                "md:hidden",
+                isScrolled ? "text-gray-900" : "text-white"
+              )}
+            >
+              <Menu className="h-6 w-6" />
+              <span className="sr-only">Abrir menu</span>
             </Button>
-          </motion.div>
-        </div>
+          </SheetTrigger>
+          <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+            <nav className="flex flex-col gap-4 mt-8">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  onClick={(e) => handleScrollToSection(e, link.href)}
+                  className="text-lg font-medium text-gray-900 hover:text-primary transition-colors"
+                >
+                  {link.name}
+                </Link>
+              ))}
+              <Button className="mt-4 w-full" asChild>
+                <Link
+                  href="https://wa.me/5583996686436"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Agendar Consulta
+                </Link>
+              </Button>
+            </nav>
+          </SheetContent>
+        </Sheet>
       </div>
-    </motion.nav>
+    </header>
   );
 }

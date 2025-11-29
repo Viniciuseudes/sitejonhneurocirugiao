@@ -107,7 +107,7 @@ export function Hero({ imageUrl }: HeroProps) {
                 size="lg"
                 className="bg-teal-600 hover:bg-teal-700 text-white shadow-lg w-full xs:w-auto text-base h-12"
               >
-                <Link href="https://wa.me/558132421234" target="_blank">
+                <Link href="https://wa.me/5583996686436" target="_blank">
                   Agendar Consulta
                 </Link>
               </Button>
