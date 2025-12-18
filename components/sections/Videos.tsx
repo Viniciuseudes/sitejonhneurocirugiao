@@ -101,11 +101,10 @@ export function Videos({ videos }: VideosProps) {
               Galeria de Mídia
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-[#0e2432] mb-4">
-              Conteúdos Rápidos (Shorts)
+              Especialidades
             </h2>
             <p className="text-gray-600 text-lg">
-              Vídeos curtos e diretos sobre as principais dúvidas de
-              neurocirurgia e coluna.
+              Vídeos curtos e diretos sobre as principais especialidades;
             </p>
           </div>
 

@@ -2,16 +2,14 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import Image from "next/image"; // Importação adicionada
+import Image from "next/image";
 import {
   Instagram,
-  Linkedin,
-  Facebook,
   MapPin,
   Phone,
   Mail,
-  ArrowRight,
   ChevronRight,
+  Clock,
 } from "lucide-react";
 
 export function Footer() {
@@ -20,37 +18,37 @@ export function Footer() {
   return (
     <footer
       id="contato"
-      className="bg-[#0e2432] text-gray-300 border-t border-white/10 relative overflow-hidden"
+      className="bg-[#091822] text-gray-300 border-t border-[#2D4F6C]/30 relative overflow-hidden"
     >
-      {/* Elemento decorativo de fundo */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-teal-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+      {/* Elemento decorativo de fundo (Glow Azul Aço) */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#2D4F6C]/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-[#152838]/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-10 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16 mb-20">
           {/* Coluna 1: Sobre a Marca */}
           <div className="space-y-6">
-            {/* ALTERAÇÃO: Logo em Imagem no Footer.
-               Aumentei um pouco para w-[200px] para destaque.
-            */}
-            <div className="relative w-[200px] h-[60px]">
+            {/* Logo */}
+            <div className="relative w-[180px] h-[60px]">
               <Image
                 src="/logojb.png"
                 alt="Dr. John Rocha"
                 fill
-                className="object-contain object-left"
+                className="object-contain object-left opacity-90 hover:opacity-100 transition-opacity"
               />
             </div>
 
-            <p className="text-sm leading-relaxed text-gray-400">
-              Neurocirurgião especializado em técnicas minimamente invasivas.
-              Compromisso com a excelência médica e a recuperação da sua
-              qualidade de vida.
+            <p className="text-sm leading-relaxed text-gray-400 border-l-2 border-[#2D4F6C]/30 pl-4">
+              Neurocirurgia de alta precisão com foco em técnicas minimamente
+              invasivas. Tecnologia a favor da sua qualidade de vida.
             </p>
-            <div className="flex gap-4">
+
+            <div className="flex gap-4 pt-2">
               {[
                 {
                   icon: Instagram,
                   href: "https://www.instagram.com/drjohn.neuro/",
+                  label: "Instagram",
                 },
               ].map((social, index) => (
                 <a
@@ -58,7 +56,8 @@ export function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-teal-600 hover:text-white transition-all duration-300 border border-white/10"
+                  aria-label={social.label}
+                  className="w-10 h-10 rounded-full bg-[#152838] flex items-center justify-center text-[#A3C3D9] hover:bg-[#2D4F6C] hover:text-white transition-all duration-300 border border-[#2D4F6C]/20 hover:scale-110 hover:shadow-[0_0_15px_rgba(45,79,108,0.4)]"
                 >
                   <social.icon className="w-5 h-5" />
                 </a>
@@ -68,27 +67,24 @@ export function Footer() {
 
           {/* Coluna 2: Links Rápidos */}
           <div>
-            <h3 className="text-white font-bold text-lg mb-6 flex items-center gap-2">
-              <span className="w-8 h-0.5 bg-teal-500 block"></span>
+            <h3 className="text-white font-serif font-bold text-lg mb-6 flex items-center gap-3">
+              <span className="w-1.5 h-1.5 bg-[#2D4F6C] rounded-full"></span>
               Navegação
             </h3>
             <ul className="space-y-3">
               {[
                 { name: "Início", href: "#" },
-                { name: "Sobre o Dr. John", href: "#sobre" },
+                { name: "Sobre a Trajetória", href: "#sobre" },
                 { name: "Especialidades", href: "#especialidades" },
                 { name: "Locais de Atendimento", href: "#locais" },
-                {
-                  name: "Agendar Consulta",
-                  href: "https://wa.me/5583996686436",
-                },
+                { name: "Galeria de Vídeos", href: "#videos" },
               ].map((link, index) => (
                 <li key={index}>
                   <Link
                     href={link.href}
-                    className="group flex items-center gap-2 text-sm hover:text-teal-400 transition-colors duration-300"
+                    className="group flex items-center gap-2 text-sm text-gray-400 hover:text-[#2D4F6C] transition-colors duration-300"
                   >
-                    <ChevronRight className="w-3 h-3 text-teal-600 group-hover:translate-x-1 transition-transform" />
+                    <ChevronRight className="w-3 h-3 text-[#2D4F6C]/50 group-hover:text-[#2D4F6C] group-hover:translate-x-1 transition-transform" />
                     {link.name}
                   </Link>
                 </li>
@@ -96,96 +92,90 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Coluna 3: Cidades de Atuação */}
+          {/* Coluna 3: Presença Regional */}
           <div>
-            <h3 className="text-white font-bold text-lg mb-6 flex items-center gap-2">
-              <span className="w-8 h-0.5 bg-teal-500 block"></span>
+            <h3 className="text-white font-serif font-bold text-lg mb-6 flex items-center gap-3">
+              <span className="w-1.5 h-1.5 bg-[#2D4F6C] rounded-full"></span>
               Atendimento
             </h3>
-            <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-teal-500 mt-1 flex-shrink-0" />
+            <div className="space-y-5">
+              <div className="flex items-start gap-3 group cursor-default">
+                <div className="mt-1 p-1.5 rounded bg-[#2D4F6C]/10 text-[#2D4F6C] group-hover:bg-[#2D4F6C] group-hover:text-white transition-colors">
+                  <MapPin className="w-4 h-4" />
+                </div>
                 <div>
-                  <h4 className="text-white font-medium text-sm">
-                    Recife - PE
+                  <h4 className="text-gray-200 font-medium text-sm group-hover:text-white">
+                    Recife & Goiana (PE)
                   </h4>
-                  <span className="text-xs text-gray-500">
-                    Max Day • Jayme da Fonte
+                  <span className="text-xs text-gray-500 block mt-1">
+                    Jayme da Fonte • Max Day • Memorial
                   </span>
                 </div>
               </div>
-              <div className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-teal-500 mt-1 flex-shrink-0" />
-                <div>
-                  <h4 className="text-white font-medium text-sm">
-                    João Pessoa - PB
-                  </h4>
-                  <span className="text-xs text-gray-500">
-                    UMAN • HNSN • CCD
-                  </span>
+
+              <div className="flex items-start gap-3 group cursor-default">
+                <div className="mt-1 p-1.5 rounded bg-[#2D4F6C]/10 text-[#2D4F6C] group-hover:bg-[#2D4F6C] group-hover:text-white transition-colors">
+                  <MapPin className="w-4 h-4" />
                 </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-teal-500 mt-1 flex-shrink-0" />
                 <div>
-                  <h4 className="text-white font-medium text-sm">
-                    Campina Grande - PB
+                  <h4 className="text-gray-200 font-medium text-sm group-hover:text-white">
+                    João Pessoa & Campina (PB)
                   </h4>
-                  <span className="text-xs text-gray-500">Clínica Digest</span>
+                  <span className="text-xs text-gray-500 block mt-1">
+                    UMAN Clinic • Clínica Digest
+                  </span>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Coluna 4: Contato Direto */}
+          {/* Coluna 4: Agendamento */}
           <div>
-            <h3 className="text-white font-bold text-lg mb-6 flex items-center gap-2">
-              <span className="w-8 h-0.5 bg-teal-500 block"></span>
-              Fale Conosco
+            <h3 className="text-white font-serif font-bold text-lg mb-6 flex items-center gap-3">
+              <span className="w-1.5 h-1.5 bg-[#2D4F6C] rounded-full"></span>
+              Agendamento
             </h3>
             <div className="space-y-4">
               <a
                 href="https://wa.me/5583996686436"
                 target="_blank"
-                className="flex items-center gap-3 p-3 rounded-lg bg-white/5 border border-white/10 hover:border-teal-500/50 hover:bg-white/10 transition-all group"
+                className="flex items-center gap-4 p-4 rounded-xl bg-[#152838]/50 border border-[#2D4F6C]/20 hover:border-[#2D4F6C] hover:bg-[#2D4F6C]/10 transition-all group shadow-lg shadow-black/20"
               >
-                <div className="w-10 h-10 rounded-full bg-teal-500/20 flex items-center justify-center text-teal-400 group-hover:scale-110 transition-transform">
+                <div className="w-10 h-10 rounded-full bg-[#2D4F6C] flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform">
                   <Phone className="w-5 h-5" />
                 </div>
                 <div>
-                  <div className="text-xs text-gray-400">
-                    Central de Agendamento
+                  <div className="text-[10px] uppercase tracking-wider text-[#2D4F6C] font-bold">
+                    Agende Agora
                   </div>
-                  <div className="text-white font-medium group-hover:text-teal-400 transition-colors">
-                    Agendar via WhatsApp
+                  <div className="text-white font-semibold text-sm group-hover:text-[#A3C3D9] transition-colors">
+                    (83) 99668-6436
                   </div>
                 </div>
               </a>
 
               <a
                 href="mailto:contato@drjohnrocha.com.br"
-                className="flex items-center gap-3 text-sm hover:text-teal-400 transition-colors pl-2"
+                className="flex items-center gap-3 text-sm text-gray-400 hover:text-[#2D4F6C] transition-colors pl-2"
               >
-                <Mail className="w-4 h-4 text-teal-600" />
+                <Mail className="w-4 h-4" />
                 contato@drjohnrocha.com.br
               </a>
             </div>
           </div>
         </div>
 
-        {/* Barra Inferior: Copyright */}
-        <div className="border-t border-white/10 pt-8 mt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500">
+        {/* Barra Inferior */}
+        <div className="border-t border-[#2D4F6C]/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500">
           <p>
-            © {currentYear} Dr. John Rocha. CRM-PE 23377 | RQE 13455. Todos os
-            direitos reservados.
+            © {currentYear} Dr. John Rocha.{" "}
+            <span className="text-[#2D4F6C]">CRM-PE 23377 | RQE 13455</span>.
+            Todos os direitos reservados.
           </p>
           <div className="flex items-center gap-6">
-            <a href="#" className="hover:text-white transition-colors">
-              Política de Privacidade
-            </a>
-            <a href="#" className="hover:text-white transition-colors">
-              Termos de Uso
-            </a>
+            <span className="flex items-center gap-1">
+              <Clock className="w-3 h-3" /> Atualizado em 2025
+            </span>
           </div>
         </div>
       </div>
