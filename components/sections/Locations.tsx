@@ -74,7 +74,7 @@ const locationsData: Record<string, CityData> = {
     units: [
       {
         name: "Clínica Digest",
-        image: "/locations/digest.webp",
+        image: "/digest.webp",
         phones: ["(83) 3342-9410"],
         addressLink: "",
         gmbLink: "",

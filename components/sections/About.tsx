@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { Play, Pause } from "lucide-react";
 import { useState, useRef } from "react";
+import { cn } from "@/lib/utils";
 
 // --- Configuração dos Stories ---
 const stories = [
@@ -142,14 +143,15 @@ export function About({ imageUrl }: AboutProps) {
           <div className="text-center mb-12">
             <h3 className="text-2xl font-bold text-[#05111A] mb-2 flex items-center justify-center gap-2">
               <Play className="w-5 h-5 text-[#2D4F6C] fill-current" />
-              Conheça mais de perto
+              Conheça mais de minha história
             </h3>
             <p className="text-gray-500">
               Clique para assistir aos depoimentos
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-center max-w-4xl mx-auto">
+          {/* Grid: 2 colunas no mobile (grid-cols-2) */}
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 justify-center max-w-4xl mx-auto">
             {stories.map((story) => {
               const isPlaying = playingId === story.id;
 
@@ -157,52 +159,59 @@ export function About({ imageUrl }: AboutProps) {
                 <div
                   key={story.id}
                   onClick={() => handlePlayToggle(story.id)}
-                  className={`group relative aspect-[9/16] bg-black rounded-2xl overflow-hidden shadow-xl cursor-pointer border transition-all duration-500 ${
+                  className={cn(
+                    "group relative aspect-[9/16] bg-black rounded-2xl overflow-hidden shadow-xl cursor-pointer border transition-all duration-500",
                     isPlaying
                       ? "border-[#2D4F6C] shadow-[#2D4F6C]/20 ring-2 ring-[#2D4F6C]/20 scale-[1.02]"
                       : "border-[#2D4F6C]/10 hover:border-[#2D4F6C] hover:-translate-y-2"
-                  }`}
+                  )}
                 >
                   {/* VÍDEO REAL */}
                   <video
                     ref={(el) => {
                       if (el) videoRefs.current[story.id] = el;
                     }}
-                    src={story.videoUrl}
+                    // O truque do #t=0.001 força o navegador a carregar o frame 1 como poster
+                    src={`${story.videoUrl}#t=0.001`}
                     className="absolute inset-0 w-full h-full object-cover"
                     playsInline
-                    onEnded={() => setPlayingId(null)} // Volta a capa quando acabar
-                    // Removido 'muted' e 'autoPlay' para controle manual
+                    preload="metadata" // Garante que carregue o frame inicial
+                    onEnded={() => setPlayingId(null)}
                   />
 
-                  {/* OVERLAY (CAPA + BOTÕES) */}
-                  {/* Só aparece se NÃO estiver tocando */}
+                  {/* OVERLAY (BOTÕES E TEXTO) - Sem imagem de capa extra */}
                   <div
-                    className={`absolute inset-0 flex flex-col justify-end p-6 bg-gradient-to-b from-transparent via-[#05111A]/20 to-[#05111A] transition-opacity duration-500 ${
+                    className={cn(
+                      "absolute inset-0 flex flex-col justify-end p-4 md:p-6 transition-opacity duration-500 z-10",
                       isPlaying
                         ? "opacity-0 pointer-events-none"
                         : "opacity-100"
-                    }`}
+                    )}
                   >
+                    {/* Gradiente sutil para garantir leitura mesmo sobre o vídeo */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent -z-10" />
+
                     {/* Botão Play Centralizado */}
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:bg-[#2D4F6C] transition-all duration-300">
-                      <Play className="w-6 h-6 text-white fill-white ml-1" />
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:bg-[#2D4F6C] transition-all duration-300">
+                      <Play className="w-5 h-5 md:w-6 md:h-6 text-white fill-white ml-1" />
                     </div>
 
                     {/* Informações */}
                     <div className="translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                      <span className="text-white font-medium tracking-wide block text-lg shadow-black drop-shadow-md">
+                      <span className="text-white font-medium tracking-wide block text-sm md:text-lg shadow-black drop-shadow-md leading-tight">
                         {story.title}
                       </span>
-                      <span className="text-xs text-gray-300 mt-1 flex items-center gap-1">
-                        <Play className="w-3 h-3" /> {story.duration}
-                      </span>
+                      {story.duration && (
+                        <span className="text-xs text-gray-300 mt-1 flex items-center gap-1">
+                          <Play className="w-3 h-3" /> {story.duration}
+                        </span>
+                      )}
                     </div>
                   </div>
 
                   {/* Botão Pause Discreto (Aparece quando está tocando e passa o mouse) */}
                   {isPlaying && (
-                    <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity bg-black/30 backdrop-blur-[1px]">
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity bg-black/30 backdrop-blur-[1px] z-20">
                       <div className="w-12 h-12 rounded-full bg-black/50 flex items-center justify-center text-white">
                         <Pause className="w-5 h-5 fill-current" />
                       </div>
