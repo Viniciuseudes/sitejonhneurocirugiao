@@ -1,27 +1,6 @@
-[00:00:02.195] Server  LOG     ✓ Ready in 1616ms
-[00:00:20.597] Server  LOG     ○ Compiling / ...
-[00:01:04.545] Server  WARN    ⚠ Cross origin request detected from 192.168.1.81 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
-Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
-[00:01:04.565] Browser WARN    Console Ninja failed to send logs, refreshing the page may help; also see https://tinyurl.com/37x8b79t: logger websocket error {"args":[{"id":1766091982678,"tool":"next.js browser"},{"nextJsDistDir":"/Users/viniciuseudes/Downloads/MEUS PROJETOS/sitejonhneurocirugiao/.next/dev"}],"method":"errorHandlerInstalled","version":"1.0.0"}
-[00:01:04.565] Browser WARN    Console Ninja failed to send logs, refreshing the page may help; also see https://tinyurl.com/37x8b79t: logger websocket error {"args":[{"id":1766091982678,"tool":"next.js browser"},{"nextJsDistDir":"/Users/viniciuseudes/Downloads/MEUS PROJETOS/sitejonhneurocirugiao/.next/dev"}],"method":"networkLoggingHandlerInstalled","version":"1.0.0"}
-[00:01:04.565] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:01:04.565] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:01:04.565] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.1.81:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://192.168.1.81:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1766091983006}
-[00:01:53.636] Browser ERROR   `DialogContent` requires a `DialogTitle` for the component to be accessible for screen reader users.
-
-If you want to hide the `DialogTitle`, you can wrap it with our VisuallyHidden component.
-
-For more information, see https://radix-ui.com/primitives/docs/components/dialog
-[00:01:53.636] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
-[00:01:53.636] Browser ERROR   `DialogContent` requires a `DialogTitle` for the component to be accessible for screen reader users.
-
-If you want to hide the `DialogTitle`, you can wrap it with our VisuallyHidden component.
-
-For more information, see https://radix-ui.com/primitives/docs/components/dialog
-[00:01:53.636] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
-[00:03:29.316] Browser WARN    Console Ninja failed to send logs, refreshing the page may help; also see https://tinyurl.com/37x8b79t: logger websocket error {"args":[{"id":1766092131959,"tool":"next.js browser"},{"nextJsDistDir":"/Users/viniciuseudes/Downloads/MEUS PROJETOS/sitejonhneurocirugiao/.next/dev"}],"method":"networkLoggingHandlerInstalled","version":"1.0.0"}
-[00:03:29.316] Browser WARN    Console Ninja failed to send logs, refreshing the page may help; also see https://tinyurl.com/37x8b79t: logger websocket error {"args":[{"id":1766092131959,"tool":"next.js browser"},{"nextJsDistDir":"/Users/viniciuseudes/Downloads/MEUS PROJETOS/sitejonhneurocirugiao/.next/dev"}],"method":"errorHandlerInstalled","version":"1.0.0"}
-[00:03:29.316] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:03:29.316] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:03:29.316] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://192.168.1.81:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://192.168.1.81:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1766092132292}
-[00:03:59.299] Server  LOG     ✓ Compiled in 117ms
+[00:00:00.919] Server  LOG     ✓ Ready in 416ms
+[00:00:10.704] Server  LOG     ○ Compiling / ...
+[00:01:27.111] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:27.370] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:01:27.370] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:01:27.370] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1766439293750}
