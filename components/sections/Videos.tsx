@@ -68,10 +68,12 @@ function VideoCard({ video }: { video: Video }) {
           {/* Informações na parte inferior (Estilo TikTok/Reels) */}
           <div className="absolute bottom-0 left-0 right-0 p-4 z-20">
             <div className="flex items-center gap-2 mb-2">
-              <div className="w-6 h-6 rounded-full bg-teal-500 flex items-center justify-center text-[10px] text-white font-bold">
+              {/* MUDANÇA AQUI: bg-teal-500 -> bg-blue-600 */}
+              <div className="w-6 h-6 rounded-full bg-blue-800 flex items-center justify-center text-[10px] text-white font-bold">
                 Dr
               </div>
-              <span className="text-xs text-teal-300 font-medium uppercase tracking-wider">
+              {/* MUDANÇA AQUI: text-teal-300 -> text-blue-300 */}
+              <span className="text-xs text-blue-200 font-medium uppercase tracking-wider">
                 Jonh
               </span>
             </div>
@@ -97,7 +99,8 @@ export function Videos({ videos }: VideosProps) {
         {/* Cabeçalho */}
         <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6 border-b border-gray-100 pb-8">
           <div className="max-w-2xl">
-            <span className="text-teal-600 font-bold tracking-widest text-sm uppercase mb-2 block">
+            {/* Mudei este subtítulo para azul também para combinar, se preferir manter verde, mude 'text-blue-600' para 'text-teal-600' */}
+            <span className="text-blue-800 font-bold tracking-widest text-sm uppercase mb-2 block">
               Galeria de Mídia
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-[#0e2432] mb-4">
@@ -108,14 +111,7 @@ export function Videos({ videos }: VideosProps) {
             </p>
           </div>
 
-          {/* Botão decorativo ou link para canal */}
-          <a
-            href="https://youtube.com/@SeuCanal"
-            target="_blank"
-            className="hidden md:flex items-center font-medium text-[#0e2432] hover:text-teal-600 transition-colors"
-          >
-            Ver canal completo &rarr;
-          </a>
+          {/* REMOVIDO: Link "Ver canal completo" Desktop */}
         </div>
 
         {/* Grid Responsivo Focado em Vertical */}
@@ -126,15 +122,7 @@ export function Videos({ videos }: VideosProps) {
           ))}
         </div>
 
-        <div className="mt-12 text-center md:hidden">
-          <a
-            href="https://youtube.com/@SeuCanal"
-            target="_blank"
-            className="inline-flex items-center font-medium text-teal-600 border border-teal-600 px-6 py-3 rounded-full hover:bg-teal-50 transition-colors"
-          >
-            Ver todos os vídeos
-          </a>
-        </div>
+        {/* REMOVIDO: Botão "Ver todos os vídeos" Mobile */}
       </div>
     </section>
   );

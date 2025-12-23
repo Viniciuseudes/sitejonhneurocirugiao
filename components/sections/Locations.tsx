@@ -8,15 +8,15 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 // --- DEFINIÇÃO DE TIPOS ---
-// Criamos uma interface para garantir que o TypeScript entenda a estrutura
 interface Unit {
   name: string;
-  sub?: string; // O '?' indica que esta propriedade é opcional
+  sub?: string;
   image: string;
   phones: string[];
   addressLink: string;
-  gmbLink: string;
+  gmbLink: string; // Usado para o botão "Ver no Mapa"
   badge: string;
+  customWppLink?: string; // NOVO: Campo opcional para link específico de WhatsApp
 }
 
 interface CityData {
@@ -26,7 +26,6 @@ interface CityData {
 }
 
 // --- DADOS DOS LOCAIS ---
-// Tipamos o objeto locationsData com Record<string, CityData>
 const locationsData: Record<string, CityData> = {
   recife: {
     city: "Recife",
@@ -70,7 +69,7 @@ const locationsData: Record<string, CityData> = {
   campina_grande: {
     city: "Campina Grande",
     description:
-      "Campina Grande é um polo de saúde e inovação na Paraíba. Estar presente na cidade, através da Clínica Digest, permite ampliar o acesso ao cuidado em coluna com precisão e responsabilidade. É sempre uma alegria atender um povo forte, acolhedor e que valoriza a medicina feita com propósito.",
+      "No coração do Agreste paraibano, Campina Grande é referência em inovação, educação e saúde. É aqui que tradição e desenvolvimento caminham juntos, e onde o cuidado com a coluna exige responsabilidade, técnica e compromisso com as pessoas.",
     units: [
       {
         name: "Clínica Digest",
@@ -79,6 +78,18 @@ const locationsData: Record<string, CityData> = {
         addressLink: "",
         gmbLink: "",
         badge: "Centro de Excelência",
+      },
+      // --- NOVO LOCAL ADICIONADO AQUI ---
+      {
+        name: "Centro Coluna Dor (CCD)",
+        sub: "Bairro dos Ipês",
+        image: "/ccd.jpg",
+        phones: ["(83) 99819-3515"],
+        addressLink: "",
+        gmbLink: "https://maps.app.goo.gl/rjNRqsz9kPnCFHeJ6",
+        badge: "Referência em Dor",
+        customWppLink:
+          "https://api.whatsapp.com/send?phone=558398193515&text=G%E2%80%8E%E2%80%8Eo%E2%80%8Estaria%20de%E2%80%8E%E2%80%8E%20%E2%80%8Eagendar%E2%80%8E%20%E2%80%8E%E2%80%8E%E2%80%8E%E2%80%8Econsu%E2%80%8E%E2%80%8E%E2%80%8E%E2%80%8El%E2%80%8Et%E2%80%8E%E2%80%8Ea%E2%80%8E%E2%80%8E%E2%80%8E%20e%E2%80%8Em%E2%80%8E%E2%80%8E%20J%E2%80%8Eo%C3%A3o%20Pes%E2%80%8Es%E2%80%8Eoa&utm_source=instagram&utm_medium=bio&utm_campaign=agendar-jp",
       },
     ],
   },
@@ -193,7 +204,6 @@ export function Locations() {
                       <h3 className="text-2xl font-bold text-[#05111A] mb-1">
                         {unit.name}
                       </h3>
-                      {/* O erro foi corrigido aqui, pois 'sub' agora é reconhecido como opcional */}
                       {unit.sub && (
                         <p className="text-[#2D4F6C] font-medium mb-4">
                           {unit.sub}
@@ -216,6 +226,7 @@ export function Locations() {
 
                       {/* Botões de Ação */}
                       <div className="mt-8 pt-6 border-t border-gray-100 flex flex-col sm:flex-row gap-3">
+                        {/* Botão Ver no Mapa: Só aparece se gmbLink existir */}
                         {unit.gmbLink && (
                           <Button
                             asChild
@@ -228,13 +239,18 @@ export function Locations() {
                           </Button>
                         )}
 
+                        {/* Botão WhatsApp: Usa o link customizado OU o padrão */}
                         <Button
                           asChild
                           variant="outline"
                           className="flex-1 border-[#2D4F6C]/20 text-[#2D4F6C] hover:bg-[#2D4F6C]/5"
                         >
                           <Link
-                            href={`https://wa.me/5583996686436?text=Olá, gostaria de agendar no ${unit.name}`}
+                            href={
+                              unit.customWppLink
+                                ? unit.customWppLink
+                                : `https://wa.me/5583996686436?text=Olá, gostaria de agendar no ${unit.name}`
+                            }
                             target="_blank"
                           >
                             Agendar Aqui

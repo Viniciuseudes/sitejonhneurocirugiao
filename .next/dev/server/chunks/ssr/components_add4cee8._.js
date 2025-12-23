@@ -2054,7 +2054,6 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 ;
 ;
 // --- DADOS DOS LOCAIS ---
-// Tipamos o objeto locationsData com Record<string, CityData>
 const locationsData = {
     recife: {
         city: "Recife",
@@ -2101,7 +2100,7 @@ const locationsData = {
     },
     campina_grande: {
         city: "Campina Grande",
-        description: "Campina Grande é um polo de saúde e inovação na Paraíba. Estar presente na cidade, através da Clínica Digest, permite ampliar o acesso ao cuidado em coluna com precisão e responsabilidade. É sempre uma alegria atender um povo forte, acolhedor e que valoriza a medicina feita com propósito.",
+        description: "No coração do Agreste paraibano, Campina Grande é referência em inovação, educação e saúde. É aqui que tradição e desenvolvimento caminham juntos, e onde o cuidado com a coluna exige responsabilidade, técnica e compromisso com as pessoas.",
         units: [
             {
                 name: "Clínica Digest",
@@ -2112,6 +2111,19 @@ const locationsData = {
                 addressLink: "",
                 gmbLink: "",
                 badge: "Centro de Excelência"
+            },
+            // --- NOVO LOCAL ADICIONADO AQUI ---
+            {
+                name: "Centro Coluna Dor (CCD)",
+                sub: "Bairro dos Ipês",
+                image: "/ccd.jpg",
+                phones: [
+                    "(83) 99819-3515"
+                ],
+                addressLink: "",
+                gmbLink: "https://maps.app.goo.gl/rjNRqsz9kPnCFHeJ6",
+                badge: "Referência em Dor",
+                customWppLink: "https://api.whatsapp.com/send?phone=558398193515&text=G%E2%80%8E%E2%80%8Eo%E2%80%8Estaria%20de%E2%80%8E%E2%80%8E%20%E2%80%8Eagendar%E2%80%8E%20%E2%80%8E%E2%80%8E%E2%80%8E%E2%80%8Econsu%E2%80%8E%E2%80%8E%E2%80%8E%E2%80%8El%E2%80%8Et%E2%80%8E%E2%80%8Ea%E2%80%8E%E2%80%8E%E2%80%8E%20e%E2%80%8Em%E2%80%8E%E2%80%8E%20J%E2%80%8Eo%C3%A3o%20Pes%E2%80%8Es%E2%80%8Eoa&utm_source=instagram&utm_medium=bio&utm_campaign=agendar-jp"
             }
         ]
     },
@@ -2149,7 +2161,7 @@ function Locations() {
                             children: "Onde me encontrar"
                         }, void 0, false, {
                             fileName: "[project]/components/sections/Locations.tsx",
-                            lineNumber: 112,
+                            lineNumber: 123,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -2157,7 +2169,7 @@ function Locations() {
                             children: "Locais de Atendimento"
                         }, void 0, false, {
                             fileName: "[project]/components/sections/Locations.tsx",
-                            lineNumber: 115,
+                            lineNumber: 126,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2165,13 +2177,13 @@ function Locations() {
                             children: "Estruturas selecionadas para oferecer o máximo de conforto e tecnologia para o seu tratamento."
                         }, void 0, false, {
                             fileName: "[project]/components/sections/Locations.tsx",
-                            lineNumber: 118,
+                            lineNumber: 129,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/sections/Locations.tsx",
-                    lineNumber: 111,
+                    lineNumber: 122,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2182,12 +2194,12 @@ function Locations() {
                             children: data.city
                         }, key, false, {
                             fileName: "[project]/components/sections/Locations.tsx",
-                            lineNumber: 127,
+                            lineNumber: 138,
                             columnNumber: 13
                         }, this))
                 }, void 0, false, {
                     fileName: "[project]/components/sections/Locations.tsx",
-                    lineNumber: 125,
+                    lineNumber: 136,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2224,17 +2236,17 @@ function Locations() {
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/sections/Locations.tsx",
-                                            lineNumber: 154,
+                                            lineNumber: 165,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/sections/Locations.tsx",
-                                        lineNumber: 153,
+                                        lineNumber: 164,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/sections/Locations.tsx",
-                                    lineNumber: 152,
+                                    lineNumber: 163,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2250,7 +2262,7 @@ function Locations() {
                                                             children: unit.badge
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/sections/Locations.tsx",
-                                                            lineNumber: 170,
+                                                            lineNumber: 181,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2259,12 +2271,12 @@ function Locations() {
                                                                 className: "w-12 h-12 opacity-20"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/sections/Locations.tsx",
-                                                                lineNumber: 176,
+                                                                lineNumber: 187,
                                                                 columnNumber: 25
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/sections/Locations.tsx",
-                                                            lineNumber: 175,
+                                                            lineNumber: 186,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -2274,20 +2286,20 @@ function Locations() {
                                                             className: "object-cover transition-transform duration-700 group-hover:scale-110"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/sections/Locations.tsx",
-                                                            lineNumber: 180,
+                                                            lineNumber: 191,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                             className: "absolute inset-0 bg-gradient-to-t from-[#05111A]/80 via-transparent to-transparent opacity-60"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/sections/Locations.tsx",
-                                                            lineNumber: 188,
+                                                            lineNumber: 199,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/sections/Locations.tsx",
-                                                    lineNumber: 168,
+                                                    lineNumber: 179,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2298,7 +2310,7 @@ function Locations() {
                                                             children: unit.name
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/sections/Locations.tsx",
-                                                            lineNumber: 193,
+                                                            lineNumber: 204,
                                                             columnNumber: 23
                                                         }, this),
                                                         unit.sub && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2306,7 +2318,7 @@ function Locations() {
                                                             children: unit.sub
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/sections/Locations.tsx",
-                                                            lineNumber: 198,
+                                                            lineNumber: 208,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2320,12 +2332,12 @@ function Locations() {
                                                                                 className: "w-4 h-4"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/components/sections/Locations.tsx",
-                                                                                lineNumber: 210,
+                                                                                lineNumber: 220,
                                                                                 columnNumber: 31
                                                                             }, this)
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/sections/Locations.tsx",
-                                                                            lineNumber: 209,
+                                                                            lineNumber: 219,
                                                                             columnNumber: 29
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2333,18 +2345,18 @@ function Locations() {
                                                                             children: phone
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/sections/Locations.tsx",
-                                                                            lineNumber: 212,
+                                                                            lineNumber: 222,
                                                                             columnNumber: 29
                                                                         }, this)
                                                                     ]
                                                                 }, i, true, {
                                                                     fileName: "[project]/components/sections/Locations.tsx",
-                                                                    lineNumber: 205,
+                                                                    lineNumber: 215,
                                                                     columnNumber: 27
                                                                 }, this))
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/sections/Locations.tsx",
-                                                            lineNumber: 203,
+                                                            lineNumber: 213,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2361,19 +2373,19 @@ function Locations() {
                                                                                 className: "w-4 h-4 mr-2"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/components/sections/Locations.tsx",
-                                                                                lineNumber: 225,
+                                                                                lineNumber: 236,
                                                                                 columnNumber: 31
                                                                             }, this),
                                                                             "Ver no Mapa"
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/components/sections/Locations.tsx",
-                                                                        lineNumber: 224,
+                                                                        lineNumber: 235,
                                                                         columnNumber: 29
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/sections/Locations.tsx",
-                                                                    lineNumber: 220,
+                                                                    lineNumber: 231,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -2381,7 +2393,7 @@ function Locations() {
                                                                     variant: "outline",
                                                                     className: "flex-1 border-[#2D4F6C]/20 text-[#2D4F6C] hover:bg-[#2D4F6C]/5",
                                                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
-                                                                        href: `https://wa.me/5583996686436?text=Olá, gostaria de agendar no ${unit.name}`,
+                                                                        href: unit.customWppLink ? unit.customWppLink : `https://wa.me/5583996686436?text=Olá, gostaria de agendar no ${unit.name}`,
                                                                         target: "_blank",
                                                                         children: [
                                                                             "Agendar Aqui",
@@ -2389,68 +2401,68 @@ function Locations() {
                                                                                 className: "w-4 h-4 ml-2"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/components/sections/Locations.tsx",
-                                                                                lineNumber: 241,
+                                                                                lineNumber: 257,
                                                                                 columnNumber: 29
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/components/sections/Locations.tsx",
-                                                                        lineNumber: 236,
+                                                                        lineNumber: 248,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/sections/Locations.tsx",
-                                                                    lineNumber: 231,
+                                                                    lineNumber: 243,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/components/sections/Locations.tsx",
-                                                            lineNumber: 218,
+                                                            lineNumber: 228,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/sections/Locations.tsx",
-                                                    lineNumber: 192,
+                                                    lineNumber: 203,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, index, true, {
                                             fileName: "[project]/components/sections/Locations.tsx",
-                                            lineNumber: 163,
+                                            lineNumber: 174,
                                             columnNumber: 19
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/components/sections/Locations.tsx",
-                                    lineNumber: 161,
+                                    lineNumber: 172,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, activeCity, true, {
                             fileName: "[project]/components/sections/Locations.tsx",
-                            lineNumber: 144,
+                            lineNumber: 155,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/sections/Locations.tsx",
-                        lineNumber: 143,
+                        lineNumber: 154,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/components/sections/Locations.tsx",
-                    lineNumber: 142,
+                    lineNumber: 153,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/components/sections/Locations.tsx",
-            lineNumber: 109,
+            lineNumber: 120,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/components/sections/Locations.tsx",
-        lineNumber: 108,
+        lineNumber: 119,
         columnNumber: 5
     }, this);
 }
@@ -3371,19 +3383,19 @@ function VideoCard({ video }) {
                             className: "flex items-center gap-2 mb-2",
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "w-6 h-6 rounded-full bg-teal-500 flex items-center justify-center text-[10px] text-white font-bold",
+                                    className: "w-6 h-6 rounded-full bg-blue-800 flex items-center justify-center text-[10px] text-white font-bold",
                                     children: "Dr"
                                 }, void 0, false, {
                                     fileName: "[project]/components/sections/Videos.tsx",
-                                    lineNumber: 71,
+                                    lineNumber: 72,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                    className: "text-xs text-teal-300 font-medium uppercase tracking-wider",
+                                    className: "text-xs text-blue-200 font-medium uppercase tracking-wider",
                                     children: "Jonh"
                                 }, void 0, false, {
                                     fileName: "[project]/components/sections/Videos.tsx",
-                                    lineNumber: 74,
+                                    lineNumber: 76,
                                     columnNumber: 15
                                 }, this)
                             ]
@@ -3397,7 +3409,7 @@ function VideoCard({ video }) {
                             children: video.title || "Assista a este vídeo explicativo"
                         }, void 0, false, {
                             fileName: "[project]/components/sections/Videos.tsx",
-                            lineNumber: 78,
+                            lineNumber: 80,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3405,7 +3417,7 @@ function VideoCard({ video }) {
                             children: "Toque para assistir"
                         }, void 0, false, {
                             fileName: "[project]/components/sections/Videos.tsx",
-                            lineNumber: 81,
+                            lineNumber: 83,
                             columnNumber: 13
                         }, this)
                     ]
@@ -3438,54 +3450,42 @@ function Videos({ videos }) {
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "flex flex-col md:flex-row justify-between items-end mb-12 gap-6 border-b border-gray-100 pb-8",
-                    children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "max-w-2xl",
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                    className: "text-teal-600 font-bold tracking-widest text-sm uppercase mb-2 block",
-                                    children: "Galeria de Mídia"
-                                }, void 0, false, {
-                                    fileName: "[project]/components/sections/Videos.tsx",
-                                    lineNumber: 100,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                                    className: "text-3xl md:text-4xl font-bold text-[#0e2432] mb-4",
-                                    children: "Especialidades"
-                                }, void 0, false, {
-                                    fileName: "[project]/components/sections/Videos.tsx",
-                                    lineNumber: 103,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                    className: "text-gray-600 text-lg",
-                                    children: "Vídeos curtos e diretos sobre as principais especialidades;"
-                                }, void 0, false, {
-                                    fileName: "[project]/components/sections/Videos.tsx",
-                                    lineNumber: 106,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/components/sections/Videos.tsx",
-                            lineNumber: 99,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
-                            href: "https://youtube.com/@SeuCanal",
-                            target: "_blank",
-                            className: "hidden md:flex items-center font-medium text-[#0e2432] hover:text-teal-600 transition-colors",
-                            children: "Ver canal completo →"
-                        }, void 0, false, {
-                            fileName: "[project]/components/sections/Videos.tsx",
-                            lineNumber: 112,
-                            columnNumber: 11
-                        }, this)
-                    ]
-                }, void 0, true, {
+                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "max-w-2xl",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                className: "text-blue-800 font-bold tracking-widest text-sm uppercase mb-2 block",
+                                children: "Galeria de Mídia"
+                            }, void 0, false, {
+                                fileName: "[project]/components/sections/Videos.tsx",
+                                lineNumber: 103,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                                className: "text-3xl md:text-4xl font-bold text-[#0e2432] mb-4",
+                                children: "Especialidades"
+                            }, void 0, false, {
+                                fileName: "[project]/components/sections/Videos.tsx",
+                                lineNumber: 106,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                className: "text-gray-600 text-lg",
+                                children: "Vídeos curtos e diretos sobre as principais especialidades;"
+                            }, void 0, false, {
+                                fileName: "[project]/components/sections/Videos.tsx",
+                                lineNumber: 109,
+                                columnNumber: 13
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/components/sections/Videos.tsx",
+                        lineNumber: 101,
+                        columnNumber: 11
+                    }, this)
+                }, void 0, false, {
                     fileName: "[project]/components/sections/Videos.tsx",
-                    lineNumber: 98,
+                    lineNumber: 100,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3494,40 +3494,23 @@ function Videos({ videos }) {
                             video: video
                         }, video.id, false, {
                             fileName: "[project]/components/sections/Videos.tsx",
-                            lineNumber: 125,
+                            lineNumber: 121,
                             columnNumber: 13
                         }, this))
                 }, void 0, false, {
                     fileName: "[project]/components/sections/Videos.tsx",
-                    lineNumber: 123,
-                    columnNumber: 9
-                }, this),
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "mt-12 text-center md:hidden",
-                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
-                        href: "https://youtube.com/@SeuCanal",
-                        target: "_blank",
-                        className: "inline-flex items-center font-medium text-teal-600 border border-teal-600 px-6 py-3 rounded-full hover:bg-teal-50 transition-colors",
-                        children: "Ver todos os vídeos"
-                    }, void 0, false, {
-                        fileName: "[project]/components/sections/Videos.tsx",
-                        lineNumber: 130,
-                        columnNumber: 11
-                    }, this)
-                }, void 0, false, {
-                    fileName: "[project]/components/sections/Videos.tsx",
-                    lineNumber: 129,
+                    lineNumber: 119,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/components/sections/Videos.tsx",
-            lineNumber: 96,
+            lineNumber: 98,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/components/sections/Videos.tsx",
-        lineNumber: 95,
+        lineNumber: 97,
         columnNumber: 5
     }, this);
 }
