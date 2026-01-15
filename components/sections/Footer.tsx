@@ -20,7 +20,6 @@ export function Footer() {
       id="contato"
       className="bg-[#091822] text-gray-300 border-t border-[#2D4F6C]/30 relative overflow-hidden"
     >
-      {/* Elemento decorativo de fundo (Glow Azul Aço) */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#2D4F6C]/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-[#152838]/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none" />
 
@@ -28,13 +27,13 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16 mb-20">
           {/* Coluna 1: Sobre a Marca */}
           <div className="space-y-6">
-            {/* Logo */}
             <div className="relative w-[180px] h-[60px]">
               <Image
                 src="/logojb.png"
-                alt="Dr. John Rocha"
+                alt="Dr. John Rocha - Neurocirurgião"
                 fill
                 className="object-contain object-left opacity-90 hover:opacity-100 transition-opacity"
+                sizes="180px"
               />
             </div>
 
@@ -48,7 +47,7 @@ export function Footer() {
                 {
                   icon: Instagram,
                   href: "https://www.instagram.com/drjohn.neuro/",
-                  label: "Instagram",
+                  label: "Siga no Instagram",
                 },
               ].map((social, index) => (
                 <a
@@ -73,11 +72,11 @@ export function Footer() {
             </h3>
             <ul className="space-y-3">
               {[
-                { name: "Início", href: "#" },
-                { name: "Sobre a Trajetória", href: "#sobre" },
-                { name: "Especialidades", href: "#especialidades" },
-                { name: "Locais de Atendimento", href: "#locais" },
-                { name: "Galeria de Vídeos", href: "#videos" },
+                { name: "Início", href: "/" },
+                { name: "Sobre a Trajetória", href: "/#sobre" },
+                { name: "Especialidades", href: "/#especialidades" },
+                { name: "Locais de Atendimento", href: "/#locais" },
+                { name: "Galeria de Vídeos", href: "/#conteudos" },
               ].map((link, index) => (
                 <li key={index}>
                   <Link
@@ -140,6 +139,7 @@ export function Footer() {
                 href="https://wa.me/5583996686436"
                 target="_blank"
                 className="flex items-center gap-4 p-4 rounded-xl bg-[#152838]/50 border border-[#2D4F6C]/20 hover:border-[#2D4F6C] hover:bg-[#2D4F6C]/10 transition-all group shadow-lg shadow-black/20"
+                aria-label="Agendar via WhatsApp"
               >
                 <div className="w-10 h-10 rounded-full bg-[#2D4F6C] flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform">
                   <Phone className="w-5 h-5" />
@@ -165,7 +165,6 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Barra Inferior */}
         <div className="border-t border-[#2D4F6C]/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500">
           <p>
             © {currentYear} Dr. John Rocha.{" "}

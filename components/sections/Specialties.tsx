@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 
-// Dados originais restaurados, agora com a nova estética
+// Dados originais restaurados
 const benefits = [
   {
     icon: Timer,
@@ -42,7 +42,6 @@ const benefits = [
   },
 ];
 
-// Dados das outras áreas de atuação (Grid Inferior)
 const otherSpecialties = [
   {
     icon: Bone,
@@ -77,7 +76,6 @@ export function Specialties() {
       id="especialidades"
       className="py-16 lg:py-24 bg-[#05111A] relative overflow-hidden"
     >
-      {/* Background sofisticado com a nova paleta */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
         <div
           className="absolute inset-0"
@@ -88,11 +86,9 @@ export function Specialties() {
         />
       </div>
 
-      {/* Luz ambiente azulada */}
       <div className="absolute top-[-10%] right-0 w-[500px] h-[500px] bg-[#2D4F6C]/10 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* --- CABEÇALHO DA SEÇÃO --- */}
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -101,7 +97,6 @@ export function Specialties() {
           variants={fadeInUp}
           className="text-center mb-16 lg:mb-20"
         >
-          {/* Badge Sofisticada */}
           <div className="inline-block px-4 py-1.5 bg-[#152838] rounded-full mb-6 border border-[#2D4F6C]/30 backdrop-blur-md">
             <span className="text-[#A3C3D9] text-xs font-bold tracking-widest uppercase">
               Tecnologia Minimamente Invasiva
@@ -118,9 +113,8 @@ export function Specialties() {
           </p>
         </motion.div>
 
-        {/* --- CONTEÚDO PRINCIPAL: IMAGEM + BENEFÍCIOS --- */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-20 lg:mb-24">
-          {/* 1. Visualização 3D (Imagem da Coluna com Glow Azul Aço) */}
+          {/* OTIMIZAÇÃO: Container de Imagem */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -129,13 +123,11 @@ export function Specialties() {
             className="relative order-2 lg:order-1 flex justify-center items-center"
           >
             <div className="relative w-full max-w-md aspect-square flex items-center justify-center">
-              {/* Aura Azul Aço - Substituindo o Teal */}
               <div
                 className="absolute inset-0 bg-gradient-to-tr from-[#2D4F6C]/30 to-[#1C3A50]/20 rounded-full blur-[80px] animate-pulse"
                 style={{ animationDuration: "4s" }}
               />
 
-              {/* Imagem Flutuante */}
               <motion.div
                 className="relative w-[90%] h-[90%] z-10"
                 animate={{ y: [0, -15, 0] }}
@@ -147,19 +139,19 @@ export function Specialties() {
               >
                 <Image
                   src="/coluna2.jpg"
-                  alt="Anatomia da Coluna Vertebral 3D"
+                  alt="Anatomia da Coluna Vertebral 3D - Cirurgia Minimamente Invasiva"
                   fill
                   className="object-contain drop-shadow-[0_0_40px_rgba(45,79,108,0.4)]"
-                  priority
+                  // OTIMIZAÇÃO CRÍTICA PARA PERFORMANCE:
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  priority={false}
                 />
               </motion.div>
 
-              {/* Círculos Orbitais Discretos */}
               <div className="absolute inset-0 border border-[#2D4F6C]/10 rounded-full scale-110 pointer-events-none" />
             </div>
           </motion.div>
 
-          {/* 2. Lista de Benefícios (Restaurada com novo Design) */}
           <div className="space-y-6 order-1 lg:order-2">
             {benefits.map((item, index) => (
               <motion.div
@@ -168,7 +160,6 @@ export function Specialties() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                // Card Efeito Vidro com Borda Azul Aço ao passar o mouse
                 className="group flex gap-5 p-5 rounded-2xl bg-[#152838]/30 border border-white/5 hover:border-[#2D4F6C]/30 hover:bg-[#152838]/60 transition-all duration-300"
               >
                 <div className="flex-shrink-0">
@@ -189,7 +180,6 @@ export function Specialties() {
           </div>
         </div>
 
-        {/* --- GRID SECUNDÁRIO (Outras Áreas) --- */}
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -200,10 +190,10 @@ export function Specialties() {
         >
           <div className="text-center mb-12">
             <h3 className="text-lg font-bold text-white uppercase tracking-widest mb-2">
-              Áreas de Atuação Complexa
+              Áreas de Atuação
             </h3>
             <p className="text-gray-500 text-sm">
-              Procedimentos realizados com o padrão ouro da neurocirurgia
+              Procedimentos de alta complexidade em neurocirurgia
             </p>
           </div>
 

@@ -3,17 +3,17 @@
 import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X } from "lucide-react";
+import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { name: "Início", href: "#hero" },
-  { name: "Sobre", href: "#about" },
-  { name: "Especialidades", href: "#specialties" },
-  { name: "Conteúdos", href: "#videos" }, // Novo link adicionado
-  { name: "Locais de Atendimento", href: "#locations" },
+  { name: "Início", href: "/#hero" }, // Adicionado / para rota absoluta
+  { name: "Sobre", href: "/#sobre" }, // Corrigido ID para bater com a section
+  { name: "Especialidades", href: "/#especialidades" },
+  { name: "Vídeos e Mídia", href: "/#conteudos" }, // Nome mais descritivo para SEO
+  { name: "Locais de Atendimento", href: "/#locais" },
 ];
 
 export function Navbar() {
@@ -33,17 +33,18 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Função para rolar suavemente (opcional, caso o Link do Next não faça nativamente com #ids em alguns browsers)
   const handleScrollToSection = (
     e: React.MouseEvent<HTMLAnchorElement>,
     href: string
   ) => {
-    if (href.startsWith("#")) {
-      e.preventDefault();
-      const element = document.querySelector(href);
+    // Apenas intercepta se estivermos na home e for uma âncora
+    if (href.startsWith("/#")) {
+      const targetId = href.replace("/", "");
+      const element = document.querySelector(targetId);
       if (element) {
+        e.preventDefault();
         element.scrollIntoView({ behavior: "smooth" });
-        setIsOpen(false); // Fecha o menu mobile se estiver aberto
+        setIsOpen(false);
       }
     }
   };
@@ -58,19 +59,22 @@ export function Navbar() {
       )}
     >
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
-        {/* Logo Dinâmica */}
+        {/* Logo Otimizada para SEO */}
         <Link
           href="/"
           className="flex items-center gap-2"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          aria-label="Voltar ao início - Dr. John Rocha Neurocirurgião"
         >
           <div className="relative h-10 w-40 md:h-12 md:w-48 transition-all">
             <Image
               src={isScrolled ? "/logoj.png" : "/logojb.png"}
-              alt="Logo Dr. John"
+              // ALT descritivo é vital para SEO de Imagem
+              alt="Dr. John Rocha - Neurocirurgião Especialista em Coluna"
               fill
               className="object-contain object-left"
               priority
+              sizes="(max-width: 768px) 160px, 192px"
             />
           </div>
         </Link>
@@ -91,7 +95,7 @@ export function Navbar() {
             </Link>
           ))}
 
-          {/* Botão Agendar Consulta - Desktop */}
+          {/* Botão Call-to-Action */}
           <Button
             variant={isScrolled ? "default" : "secondary"}
             className={cn(
@@ -104,6 +108,7 @@ export function Navbar() {
               href="https://wa.me/5583996686436"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Agendar consulta via WhatsApp"
             >
               Agendar Consulta
             </Link>
@@ -120,9 +125,9 @@ export function Navbar() {
                 "md:hidden",
                 isScrolled ? "text-gray-900" : "text-white"
               )}
+              aria-label="Abrir menu de navegação"
             >
               <Menu className="h-6 w-6" />
-              <span className="sr-only">Abrir menu</span>
             </Button>
           </SheetTrigger>
           <SheetContent side="right" className="w-[300px] sm:w-[400px]">

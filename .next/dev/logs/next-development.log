@@ -93,3 +93,5 @@ Check the render method of `Home`.
 [15:52:40.472] Browser WARN    Image with src "/logojb.png" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
 Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
 [15:53:34.093] Server  LOG     ✓ Compiled in 90ms
+[16:27:50.985] Browser WARN    Image with src "/logojb.png" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Play } from "lucide-react";
 import Image from "next/image";
-import { cn } from "@/lib/utils"; // Utilitário padrão do shadcn
+import { cn } from "@/lib/utils";
 
 interface Video {
   id: number;
@@ -17,19 +17,16 @@ interface VideosProps {
 
 function VideoCard({ video }: { video: Video }) {
   const [isPlaying, setIsPlaying] = useState(false);
-
-  // URL da thumbnail (tenta pegar a de alta resolução)
   const thumbnailUrl = `https://img.youtube.com/vi/${video.youtube_id}/maxresdefault.jpg`;
 
   return (
     <div
       className={cn(
         "relative group overflow-hidden rounded-2xl bg-black shadow-lg hover:shadow-2xl transition-all duration-300",
-        "aspect-[9/16]" // FORÇA O FORMATO SHORTS (Vertical)
+        "aspect-[9/16]"
       )}
     >
       {isPlaying ? (
-        // --- PLAYER DO YOUTUBE (AutoPlay) ---
         <iframe
           className="w-full h-full absolute inset-0"
           src={`https://www.youtube.com/embed/${video.youtube_id}?autoplay=1&rel=0&modestbranding=1&controls=1&showinfo=0&loop=1`}
@@ -38,16 +35,16 @@ function VideoCard({ video }: { video: Video }) {
           allowFullScreen
         />
       ) : (
-        // --- CAPA DO SHORTS (Estilo App) ---
         <div
           className="w-full h-full cursor-pointer relative"
           onClick={() => setIsPlaying(true)}
         >
-          {/* Imagem de Fundo (Cobre tudo) */}
           <Image
             src={thumbnailUrl}
-            alt={video.title || "Vídeo thumbnail"}
+            alt={video.title || "Vídeo sobre neurocirurgia e coluna"}
             fill
+            // OTIMIZAÇÃO: Carrega imagem pequena no mobile (50vw) e pequena no desktop (25vw)
+            sizes="(max-width: 768px) 50vw, 25vw"
             className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-90 group-hover:opacity-100"
             onError={(e) => {
               const target = e.target as HTMLImageElement;
@@ -55,26 +52,21 @@ function VideoCard({ video }: { video: Video }) {
             }}
           />
 
-          {/* Gradiente Escuro no Fundo (Para ler o texto) */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80" />
 
-          {/* Botão de Play Centralizado */}
           <div className="absolute inset-0 flex items-center justify-center z-10">
             <div className="w-14 h-14 bg-white/20 backdrop-blur-sm border border-white/40 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-xl">
               <Play className="w-6 h-6 text-white fill-white ml-1" />
             </div>
           </div>
 
-          {/* Informações na parte inferior (Estilo TikTok/Reels) */}
           <div className="absolute bottom-0 left-0 right-0 p-4 z-20">
             <div className="flex items-center gap-2 mb-2">
-              {/* MUDANÇA AQUI: bg-teal-500 -> bg-blue-600 */}
               <div className="w-6 h-6 rounded-full bg-blue-800 flex items-center justify-center text-[10px] text-white font-bold">
                 Dr
               </div>
-              {/* MUDANÇA AQUI: text-teal-300 -> text-blue-300 */}
               <span className="text-xs text-blue-200 font-medium uppercase tracking-wider">
-                Jonh
+                John Rocha
               </span>
             </div>
             <h3 className="text-white font-semibold text-sm md:text-base leading-snug line-clamp-3 mb-1">
@@ -96,33 +88,26 @@ export function Videos({ videos }: VideosProps) {
   return (
     <section className="py-24 bg-white" id="conteudos">
       <div className="container mx-auto px-4 max-w-6xl">
-        {/* Cabeçalho */}
         <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6 border-b border-gray-100 pb-8">
           <div className="max-w-2xl">
-            {/* Mudei este subtítulo para azul também para combinar, se preferir manter verde, mude 'text-blue-600' para 'text-teal-600' */}
             <span className="text-blue-800 font-bold tracking-widest text-sm uppercase mb-2 block">
-              Galeria de Mídia
+              Educação do Paciente
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-[#0e2432] mb-4">
-              Especialidades
+              Galeria de Vídeos
             </h2>
             <p className="text-gray-600 text-lg">
-              Vídeos curtos e diretos sobre as principais especialidades;
+              Entenda mais sobre tratamentos e cirurgias de coluna com
+              explicações simples e diretas.
             </p>
           </div>
-
-          {/* REMOVIDO: Link "Ver canal completo" Desktop */}
         </div>
 
-        {/* Grid Responsivo Focado em Vertical */}
-        {/* Mobile: 2 colunas (como Instagram) | Desktop: 4 colunas */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
           {videos.map((video) => (
             <VideoCard key={video.id} video={video} />
           ))}
         </div>
-
-        {/* REMOVIDO: Botão "Ver todos os vídeos" Mobile */}
       </div>
     </section>
   );
