@@ -3,10 +3,23 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  // ATENÇÃO: A linha 'unoptimized: true' foi removida para ativar a performance máxima.
-  // Se as imagens quebrarem na Vercel, certifique-se de que não ultrapassou os limites do plano Hobby.
   images: {
     formats: ['image/avif', 'image/webp'],
+    // AQUI ESTÁ A CORREÇÃO: Liberando domínios externos
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'img.youtube.com', // Thumbnails principais do YouTube
+      },
+      {
+        protocol: 'https',
+        hostname: 'i.ytimg.com', // Thumbnails de fallback do YouTube
+      },
+      {
+        protocol: 'https',
+        hostname: '**', // Libera todas as outras (Supabase, etc) para evitar erros futuros
+      },
+    ],
   },
 }
 

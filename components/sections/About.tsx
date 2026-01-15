@@ -38,25 +38,20 @@ interface AboutProps {
 }
 
 export function About({ imageUrl }: AboutProps) {
-  // Estado para saber qual vídeo está tocando (pelo ID)
   const [playingId, setPlayingId] = useState<number | null>(null);
-
-  // Referências para controlar os elementos de vídeo diretamente
   const videoRefs = useRef<{ [key: number]: HTMLVideoElement | null }>({});
 
   const handlePlayToggle = (id: number) => {
     const currentVideo = videoRefs.current[id];
 
-    // 1. Se clicar em um vídeo diferente do que está tocando, pausa o anterior
     if (playingId && playingId !== id) {
       const previousVideo = videoRefs.current[playingId];
       if (previousVideo) {
         previousVideo.pause();
-        previousVideo.currentTime = 0; // Opcional: reseta o vídeo anterior
+        previousVideo.currentTime = 0;
       }
     }
 
-    // 2. Controla o Play/Pause do vídeo clicado
     if (currentVideo) {
       if (currentVideo.paused) {
         currentVideo.play();
@@ -84,12 +79,14 @@ export function About({ imageUrl }: AboutProps) {
             variants={fadeInUp}
           >
             <div className="relative aspect-square bg-gradient-to-br from-[#05111A] to-[#2D4F6C] rounded-2xl overflow-hidden shadow-2xl transform hover:scale-[1.02] transition-transform duration-500">
+              {/* OTIMIZAÇÃO: Imagem com sizes para performance mobile */}
               <Image
                 src={imageUrl}
-                alt="Dr. John Rocha"
+                alt="Dr. John Rocha - Neurocirurgião explicando sua trajetória"
                 fill
                 className="object-cover opacity-90 hover:opacity-100 transition-opacity duration-500"
                 sizes="(max-width: 768px) 100vw, 50vw"
+                priority={false} // Lazy load pois não está na primeira dobra
               />
             </div>
           </motion.div>
@@ -131,7 +128,7 @@ export function About({ imageUrl }: AboutProps) {
           </motion.div>
         </div>
 
-        {/* --- NOVA SEÇÃO: VÍDEOS INTERATIVOS --- */}
+        {/* --- SEÇÃO: VÍDEOS INTERATIVOS --- */}
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -150,7 +147,6 @@ export function About({ imageUrl }: AboutProps) {
             </p>
           </div>
 
-          {/* Grid: 2 colunas no mobile (grid-cols-2) */}
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 justify-center max-w-4xl mx-auto">
             {stories.map((story) => {
               const isPlaying = playingId === story.id;
@@ -166,20 +162,17 @@ export function About({ imageUrl }: AboutProps) {
                       : "border-[#2D4F6C]/10 hover:border-[#2D4F6C] hover:-translate-y-2"
                   )}
                 >
-                  {/* VÍDEO REAL */}
                   <video
                     ref={(el) => {
                       if (el) videoRefs.current[story.id] = el;
                     }}
-                    // O truque do #t=0.001 força o navegador a carregar o frame 1 como poster
                     src={`${story.videoUrl}#t=0.001`}
                     className="absolute inset-0 w-full h-full object-cover"
                     playsInline
-                    preload="metadata" // Garante que carregue o frame inicial
+                    preload="metadata"
                     onEnded={() => setPlayingId(null)}
                   />
 
-                  {/* OVERLAY (BOTÕES E TEXTO) - Sem imagem de capa extra */}
                   <div
                     className={cn(
                       "absolute inset-0 flex flex-col justify-end p-4 md:p-6 transition-opacity duration-500 z-10",
@@ -188,15 +181,12 @@ export function About({ imageUrl }: AboutProps) {
                         : "opacity-100"
                     )}
                   >
-                    {/* Gradiente sutil para garantir leitura mesmo sobre o vídeo */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent -z-10" />
 
-                    {/* Botão Play Centralizado */}
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:bg-[#2D4F6C] transition-all duration-300">
                       <Play className="w-5 h-5 md:w-6 md:h-6 text-white fill-white ml-1" />
                     </div>
 
-                    {/* Informações */}
                     <div className="translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
                       <span className="text-white font-medium tracking-wide block text-sm md:text-lg shadow-black drop-shadow-md leading-tight">
                         {story.title}
@@ -209,7 +199,6 @@ export function About({ imageUrl }: AboutProps) {
                     </div>
                   </div>
 
-                  {/* Botão Pause Discreto (Aparece quando está tocando e passa o mouse) */}
                   {isPlaying && (
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity bg-black/30 backdrop-blur-[1px] z-20">
                       <div className="w-12 h-12 rounded-full bg-black/50 flex items-center justify-center text-white">
