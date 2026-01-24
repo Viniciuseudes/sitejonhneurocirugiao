@@ -105,7 +105,6 @@ var __TURBOPACK__imported__module__$5b$next$5d2f$internal$2f$font$2f$google$2f$m
 var __TURBOPACK__imported__module__$5b$next$5d2f$internal$2f$font$2f$google$2f$inter_5901b7c6$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[next]/internal/font/google/inter_5901b7c6.js [app-rsc] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$vercel$2f$analytics$2f$dist$2f$next$2f$index$2e$mjs__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/@vercel/analytics/dist/next/index.mjs [app-rsc] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$script$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/script.js [app-rsc] (ecmascript)");
-// 1. IMPORTAÇÃO DO TOASTER
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$toaster$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/toaster.tsx [app-rsc] (ecmascript)");
 ;
 ;
@@ -114,29 +113,27 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$toaster$
 ;
 ;
 ;
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://drjohnrocha.com.br";
+// SEU DOMÍNIO
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.drjohnneuro.com.br";
 const metadata = {
     metadataBase: new URL(BASE_URL),
+    alternates: {
+        canonical: "/"
+    },
     title: {
-        default: "Dr. John Rocha | Neurocirurgião - Especialista em Coluna, Crânio e Dor",
+        default: "Dr. John Rocha | Neurocirurgião - Especialista em Coluna e Dor",
         template: "%s | Dr. John Rocha"
     },
-    description: "Dr. John Rocha é neurocirurgião especialista no tratamento de hérnia de disco, dor no nervo ciático e cirurgias minimamente invasivas em Recife e João Pessoa.",
+    description: "Dr. John Rocha é neurocirurgião especialista em cirurgia minimamente invasiva da coluna, tratamento de hérnia de disco e dor ciática. Atendimento em Recife, João Pessoa, Campina Grande e Goiana.",
     keywords: [
-        "Neurocirurgião",
-        "Cirurgia de Coluna",
-        "Endoscopia de Coluna",
-        "Hérnia de Disco",
-        "Tratamento da Dor",
-        "Dor no nervo ciático",
-        "Dor na lombar",
-        "Cirurgia minimamente invasiva",
-        "Especialista em dor crônica",
-        "Bloqueio da dor",
-        "Neurocirurgia Recife",
-        "Neurocirurgia João Pessoa",
-        "Neurocirurgião Campina Grande",
-        "Dr. John Rocha"
+        "Neurocirurgião em Recife",
+        "Neurocirurgião em João Pessoa",
+        "Cirurgia de Coluna Minimamente Invasiva",
+        "Especialista em Hérnia de Disco",
+        "Tratamento de Dor Ciática",
+        "Dr. John Rocha",
+        "Bloqueio da Dor",
+        "Neurocirurgia Campina Grande"
     ],
     authors: [
         {
@@ -145,14 +142,9 @@ const metadata = {
     ],
     creator: "Dr. John Rocha",
     publisher: "Dr. John Rocha",
-    formatDetection: {
-        email: false,
-        address: false,
-        telephone: false
-    },
     openGraph: {
-        title: "Dr. John Rocha | Neurocirurgião Especialista",
-        description: "Recupere sua qualidade de vida. Especialista em coluna, crânio e dor com técnicas minimamente invasivas.",
+        title: "Dr. John Rocha | Neurocirurgião Especialista em Coluna",
+        description: "Recupere sua qualidade de vida. Tratamentos avançados para coluna e crânio com técnicas minimamente invasivas.",
         url: BASE_URL,
         siteName: "Dr. John Rocha",
         locale: "pt_BR",
@@ -162,34 +154,29 @@ const metadata = {
                 url: "/professional-neurosurgeon-portrait.jpg",
                 width: 1200,
                 height: 630,
-                alt: "Dr. John Rocha - Neurocirurgião"
+                alt: "Dr. John Rocha - Neurocirurgião Especialista"
             }
-        ]
-    },
-    twitter: {
-        card: "summary_large_image",
-        title: "Dr. John Rocha | Neurocirurgião",
-        description: "Especialista em cirurgia endoscópica da coluna e tratamento da dor.",
-        images: [
-            "/professional-neurosurgeon-portrait.jpg"
         ]
     },
     icons: {
-        icon: [
-            {
-                url: "/icon-light-32x32.png",
-                media: "(prefers-color-scheme: light)"
-            },
-            {
-                url: "/icon-dark-32x32.png",
-                media: "(prefers-color-scheme: dark)"
-            },
-            {
-                url: "/icon.svg",
-                type: "image/svg+xml"
-            }
-        ],
-        apple: "/apple-icon.png"
+        icon: "/logojb.png",
+        shortcut: "/logojb.png",
+        apple: "/logojb.png",
+        other: {
+            rel: "apple-touch-icon-precomposed",
+            url: "/logojb.png"
+        }
+    },
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            "max-video-preview": -1,
+            "max-image-preview": "large",
+            "max-snippet": -1
+        }
     }
 };
 function RootLayout({ children }) {
@@ -198,39 +185,51 @@ function RootLayout({ children }) {
         "@type": "Physician",
         name: "Dr. John Rocha",
         image: `${BASE_URL}/professional-neurosurgeon-portrait.jpg`,
-        description: "Neurocirurgião especializado em coluna, crânio e dor. Cirurgias minimamente invasivas e endoscópicas.",
-        medicalSpecialty: [
-            "Neurological Surgery",
-            "Spinal Surgery",
-            "Pain Management"
-        ],
+        description: "Neurocirurgião especializado em coluna, crânio e dor. Tratamentos minimamente invasivos.",
         url: BASE_URL,
         telephone: "+558120114050",
-        address: [
+        priceRange: "$$$",
+        address: {
+            "@type": "PostalAddress",
+            addressLocality: "Recife",
+            addressRegion: "PE",
+            addressCountry: "BR"
+        },
+        areaServed: [
             {
-                "@type": "PostalAddress",
-                addressLocality: "Recife",
-                addressRegion: "PE",
-                addressCountry: "BR"
+                "@type": "City",
+                name: "Recife",
+                sameAs: "https://en.wikipedia.org/wiki/Recife"
             },
             {
-                "@type": "PostalAddress",
-                addressLocality: "João Pessoa",
-                addressRegion: "PB",
-                addressCountry: "BR"
+                "@type": "City",
+                name: "João Pessoa",
+                sameAs: "https://en.wikipedia.org/wiki/João_Pessoa"
             },
             {
-                "@type": "PostalAddress",
-                addressLocality: "Campina Grande",
-                addressRegion: "PB",
-                addressCountry: "BR"
+                "@type": "City",
+                name: "Campina Grande",
+                sameAs: "https://en.wikipedia.org/wiki/Campina_Grande"
+            },
+            {
+                "@type": "City",
+                name: "Goiana",
+                sameAs: "https://en.wikipedia.org/wiki/Goiana"
             }
         ],
         sameAs: [
-            "https://instagram.com/drjohnrocha",
-            "https://facebook.com/drjohnrocha"
+            "https://instagram.com/drjohnrocha"
         ],
-        priceRange: "$$$"
+        availableService: [
+            {
+                "@type": "MedicalTherapy",
+                name: "Cirurgia de Coluna Minimamente Invasiva"
+            },
+            {
+                "@type": "MedicalTherapy",
+                name: "Tratamento de Hérnia de Disco"
+            }
+        ]
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("html", {
         lang: "pt-BR",
@@ -238,6 +237,63 @@ function RootLayout({ children }) {
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("body", {
             className: `${__TURBOPACK__imported__module__$5b$next$5d2f$internal$2f$font$2f$google$2f$montserrat_bba129a6$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"].variable} ${__TURBOPACK__imported__module__$5b$next$5d2f$internal$2f$font$2f$google$2f$inter_5901b7c6$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"].variable} font-sans antialiased`,
             children: [
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("noscript", {
+                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("iframe", {
+                        src: "https://www.googletagmanager.com/ns.html?id=GTM-WD89C22N",
+                        height: "0",
+                        width: "0",
+                        style: {
+                            display: "none",
+                            visibility: "hidden"
+                        }
+                    }, void 0, false, {
+                        fileName: "[project]/app/layout.tsx",
+                        lineNumber: 150,
+                        columnNumber: 11
+                    }, this)
+                }, void 0, false, {
+                    fileName: "[project]/app/layout.tsx",
+                    lineNumber: 149,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$script$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
+                    id: "google-tag-manager",
+                    strategy: "afterInteractive",
+                    children: `
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-WD89C22N');
+          `
+                }, void 0, false, {
+                    fileName: "[project]/app/layout.tsx",
+                    lineNumber: 159,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$script$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
+                    src: "https://www.googletagmanager.com/gtag/js?id=G-M45WVJ449K",
+                    strategy: "afterInteractive"
+                }, void 0, false, {
+                    fileName: "[project]/app/layout.tsx",
+                    lineNumber: 170,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$script$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
+                    id: "google-analytics",
+                    strategy: "afterInteractive",
+                    children: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-M45WVJ449K');
+          `
+                }, void 0, false, {
+                    fileName: "[project]/app/layout.tsx",
+                    lineNumber: 174,
+                    columnNumber: 9
+                }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$script$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
                     id: "schema-jsonld",
                     type: "application/ld+json",
@@ -246,29 +302,29 @@ function RootLayout({ children }) {
                     }
                 }, void 0, false, {
                     fileName: "[project]/app/layout.tsx",
-                    lineNumber: 140,
+                    lineNumber: 185,
                     columnNumber: 9
                 }, this),
                 children,
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$toaster$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Toaster"], {}, void 0, false, {
                     fileName: "[project]/app/layout.tsx",
-                    lineNumber: 149,
+                    lineNumber: 192,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$vercel$2f$analytics$2f$dist$2f$next$2f$index$2e$mjs__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Analytics"], {}, void 0, false, {
                     fileName: "[project]/app/layout.tsx",
-                    lineNumber: 151,
+                    lineNumber: 193,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/app/layout.tsx",
-            lineNumber: 137,
+            lineNumber: 143,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/app/layout.tsx",
-        lineNumber: 136,
+        lineNumber: 142,
         columnNumber: 5
     }, this);
 }

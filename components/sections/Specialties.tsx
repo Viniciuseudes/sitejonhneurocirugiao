@@ -30,13 +30,12 @@ const benefits = [
   },
   {
     icon: Target,
-    title: "Alta Precisão",
-    description:
-      "Visualização em alta definição (4K) da patologia para segurança máxima.",
+    title: "Referência em Cirurgia da Coluna Vertebral",
+    description: "Utilização de técnica de última geração.",
   },
   {
     icon: Sparkles,
-    title: "Estética Superior",
+    title: "Cirurgia minimamente invasiva",
     description:
       "Incisões menores que 1cm, sem pontos externos e cicatrizes quase invisíveis.",
   },
@@ -50,7 +49,7 @@ const otherSpecialties = [
   },
   {
     icon: Stethoscope,
-    title: "Endoscopia",
+    title: "Endoscopia de coluna",
     desc: "Técnica ultra moderna.",
   },
   {

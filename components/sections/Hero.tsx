@@ -11,6 +11,10 @@ interface HeroProps {
   backgroundImageUrl?: string;
 }
 
+// Link centralizado
+const WHATSAPP_LINK =
+  "https://wa.me/5581981044889?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es%20para%20agendar%20uma%20consulta%20com%20Dr.%20John%20Rocha";
+
 export function Hero({
   imageUrl: _imageUrl,
   backgroundImageUrl = "/hero.webp",
@@ -26,7 +30,6 @@ export function Hero({
 
   return (
     <section className="relative min-h-[95vh] lg:min-h-screen flex items-end lg:items-center overflow-hidden pt-20 lg:pt-0 bg-[#05111A]">
-      {/* --- BACKGROUND EFFECTS & IMAGE --- */}
       <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
         <div className="absolute inset-0 z-0">
           <Image
@@ -59,12 +62,10 @@ export function Hero({
         />
       </div>
 
-      {/* Container do Conteúdo */}
       <div className="container relative z-30 mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 lg:gap-12 items-center w-full min-h-[calc(100vh-80px)]">
           {/* --- COLUNA DIREITA: IMAGEM MÉDICO --- */}
           <div className="relative h-full flex items-end justify-center lg:justify-end mt-[-20px] lg:mt-0 pointer-events-none lg:col-span-6 order-1 lg:order-2 z-10">
-            {/* 1. WRAPPER DA IMAGEM (Com Máscara) */}
             <motion.div
               initial={{ opacity: 0, scale: 0.98, x: 20 }}
               animate={{ opacity: 1, scale: 1, x: 0 }}
@@ -75,7 +76,6 @@ export function Hero({
               }}
               className="relative w-full max-w-[500px] lg:max-w-[700px] h-[60vh] lg:h-[90vh] flex items-end"
               style={{
-                // A máscara agora afeta SÓ a imagem, não o badge
                 WebkitMaskImage:
                   "linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%), linear-gradient(to top, transparent 0%, black 15%)",
                 maskImage:
@@ -101,29 +101,30 @@ export function Hero({
               />
             </motion.div>
 
-            {/* 2. CRM BADGE (Fora da Máscara) 
-               Agora ele é "irmão" da imagem, não "filho". Fica por cima de tudo.
-            */}
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.2, duration: 1, ease: "easeOut" }}
-              // Ajustei o bottom para garantir visibilidade total
               className="absolute bottom-6 left-1/2 -translate-x-1/2 lg:translate-x-0 lg:left-[5%] lg:bottom-24 w-max max-w-[90%] bg-[#0D1F2D]/95 backdrop-blur-xl border border-[#2D4F6C]/40 p-3 lg:p-4 rounded-2xl z-40 shadow-2xl block"
             >
               <div className="flex items-center gap-3 lg:gap-4">
-                <div className="w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-gradient-to-tr from-[#2D4F6C] to-[#1C3A50] flex items-center justify-center shadow-lg">
+                <div className="w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-gradient-to-tr from-[#2D4F6C] to-[#1C3A50] flex items-center justify-center shadow-lg shrink-0">
                   <span className="text-white font-bold text-[10px] tracking-wider">
                     CRM
                   </span>
                 </div>
                 <div className="text-left">
-                  <p className="text-white text-xs lg:text-sm font-bold leading-tight">
+                  <p className="text-white text-xs lg:text-sm font-bold leading-tight mb-1">
                     Excelência Médica
                   </p>
-                  <p className="text-[#94A3B8] text-[10px] lg:text-xs">
-                    CRM-PE 23377 | RQE 13455
-                  </p>
+                  <div className="flex flex-col gap-0.5">
+                    <p className="text-[#94A3B8] text-[10px] lg:text-xs whitespace-nowrap">
+                      CRM PE 29455 | RQE PE 17696
+                    </p>
+                    <p className="text-[#94A3B8] text-[10px] lg:text-xs whitespace-nowrap">
+                      CRM PB 11828 | RQE PB 9939
+                    </p>
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -156,8 +157,8 @@ export function Hero({
               className="text-4xl sm:text-5xl lg:text-7xl font-bold text-white leading-[1.1] mb-6 tracking-tight text-center lg:text-left drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]"
             >
               Dr. John Rocha <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-[#6B8CA8] text-2xl sm:text-4xl lg:text-6xl block mt-2">
-                Neurocirurgião Especialista
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-[#6B8CA8] text-2xl sm:text-4xl lg:text-5xl block mt-2 leading-tight">
+                Especialista em Cirurgia da Coluna e Dor
               </span>
             </motion.h1>
 
@@ -179,8 +180,9 @@ export function Hero({
                 size="lg"
                 className="h-14 px-8 bg-[#2D4F6C] hover:bg-[#1C3A50] text-white rounded-full text-base font-semibold shadow-[0_0_20px_rgba(45,79,108,0.3)] hover:shadow-[0_0_30px_rgba(45,79,108,0.4)] transition-all duration-300 border border-[#2D4F6C]"
               >
+                {/* ATUALIZADO: Link do Botão */}
                 <Link
-                  href="https://wa.me/5583996686436"
+                  href={WHATSAPP_LINK}
                   target="_blank"
                   className="flex items-center gap-2"
                 >
@@ -205,7 +207,7 @@ export function Hero({
             >
               {[
                 "Atendimento Humanizado",
-                "Tecnologia 4K",
+                "Referência em Cirurgia da Coluna Vertebral",
                 "Recuperação Acelerada",
               ].map((item, i) => (
                 <div key={i} className="flex items-center gap-2">

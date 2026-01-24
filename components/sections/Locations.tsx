@@ -16,7 +16,7 @@ interface Unit {
   addressLink: string;
   gmbLink: string; // Usado para o botão "Ver no Mapa"
   badge: string;
-  customWppLink?: string; // NOVO: Campo opcional para link específico de WhatsApp
+  customWppLink?: string; // Campo opcional para link específico de WhatsApp
 }
 
 interface CityData {
@@ -24,6 +24,10 @@ interface CityData {
   description: string;
   units: Unit[];
 }
+
+// Link específico para Recife solicitado
+const WHATSAPP_RECIFE =
+  "https://wa.me/5581981044889?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es%20para%20agendar%20uma%20consulta%20com%20Dr.%20John%20Rocha";
 
 // --- DADOS DOS LOCAIS ---
 const locationsData: Record<string, CityData> = {
@@ -39,6 +43,8 @@ const locationsData: Record<string, CityData> = {
         addressLink: "https://maps.app.goo.gl/rg9lfKmBTdrLbRMdB",
         gmbLink: "https://share.google/rg9lfKmBTdrLbRMdB",
         badge: "Referência Hospitalar",
+        // ADICIONADO: Link específico para Recife
+        customWppLink: WHATSAPP_RECIFE,
       },
       {
         name: "Max Day Hospital",
@@ -48,6 +54,8 @@ const locationsData: Record<string, CityData> = {
         addressLink: "https://maps.app.goo.gl/KODBqM1MxT3drBtnl",
         gmbLink: "https://share.google/KODBqM1MxT3drBtnl",
         badge: "Estrutura Premium",
+        // ADICIONADO: Link específico para Recife
+        customWppLink: WHATSAPP_RECIFE,
       },
     ],
   },
@@ -162,7 +170,7 @@ export function Locations() {
               <div className="mb-12 text-center max-w-3xl mx-auto">
                 <div className="inline-block p-4 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0]">
                   <p className="text-[#152838] text-lg font-medium italic leading-relaxed">
-                    "{locationsData[activeCity].description}"
+                    &quot;{locationsData[activeCity].description}&quot;
                   </p>
                 </div>
               </div>
