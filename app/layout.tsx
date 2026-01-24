@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/professional-neurosurgeon-portrait.jpg",
+        url: "/url.jpg",
         width: 1200,
         height: 630,
         alt: "Dr. John Rocha - Neurocirurgião Especialista",
@@ -91,7 +91,7 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "Physician",
     name: "Dr. John Rocha",
-    image: `${BASE_URL}/professional-neurosurgeon-portrait.jpg`,
+    image: `${BASE_URL}/url.jpg`,
     description:
       "Neurocirurgião especializado em coluna, crânio e dor. Tratamentos minimamente invasivos.",
     url: BASE_URL,

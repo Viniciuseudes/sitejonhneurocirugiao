@@ -23,12 +23,10 @@ export default async function Home() {
     .order("created_at", { ascending: false });
 
   const heroImage =
-    config?.find((item) => item.key === "hero_image")?.image_url ||
-    "/professional-neurosurgeon-portrait.jpg";
+    config?.find((item) => item.key === "hero_image")?.image_url || "/url.jpg";
 
   const aboutImage =
-    config?.find((item) => item.key === "about_image")?.image_url ||
-    "/professional-neurosurgeon-portrait.jpg";
+    config?.find((item) => item.key === "about_image")?.image_url || "/url.jpg";
 
   return (
     <div className="min-h-screen">
