@@ -92,7 +92,7 @@ export function Hero({
               />
 
               <Image
-                src="/dr-john-hero-transparent.png"
+                src="/trasnparente.png"
                 alt="Dr. John Rocha - Neurocirurgião Especialista em Coluna"
                 fill
                 priority
