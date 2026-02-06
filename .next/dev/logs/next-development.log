@@ -12,3 +12,5 @@
 [00:00:27.922] Server  LOG     ✓ Compiled in 94ms
 [00:00:28.159] Server  ERROR   TypeError: Cannot read properties of null (reading 'stack')
 [00:00:44.322] Server  LOG     ✓ Compiled in 76ms
+[00:01:43.638] Browser WARN    Image with src "/jayme.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:01:43.638] Browser WARN    Image with src "/maxday.webp" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
