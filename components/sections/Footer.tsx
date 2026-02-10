@@ -136,10 +136,9 @@ export function Footer() {
             </h3>
             <div className="space-y-4">
               <a
-                href="5583998446175"
-                target="_blank"
+                href="tel:+5583998446175"
                 className="flex items-center gap-4 p-4 rounded-xl bg-[#152838]/50 border border-[#2D4F6C]/20 hover:border-[#2D4F6C] hover:bg-[#2D4F6C]/10 transition-all group shadow-lg shadow-black/20"
-                aria-label="Agendar via WhatsApp"
+                aria-label="Ligar para agendar consulta"
               >
                 <div className="w-10 h-10 rounded-full bg-[#2D4F6C] flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform">
                   <Phone className="w-5 h-5" />
@@ -149,7 +148,7 @@ export function Footer() {
                     Agende Agora
                   </div>
                   <div className="text-white font-semibold text-sm group-hover:text-[#A3C3D9] transition-colors">
-                    (83) 99668-6436
+                    (83) 99844-6175
                   </div>
                 </div>
               </a>
