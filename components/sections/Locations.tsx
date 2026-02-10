@@ -96,7 +96,7 @@ const locationsData: Record<string, CityData> = {
         gmbLink: "https://maps.app.goo.gl/rjNRqsz9kPnCFHeJ6",
         badge: "Referência em Dor",
         customWppLink:
-          "https://api.whatsapp.com/send?phone=558398193515&text=G%E2%80%8E%E2%80%8Eo%E2%80%8Estaria%20de%E2%80%8E%E2%80%8E%20%E2%80%8Eagendar%E2%80%8E%20%E2%80%8E%E2%80%8E%E2%80%8E%E2%80%8Econsu%E2%80%8E%E2%80%8E%E2%80%8E%E2%80%8El%E2%80%8Et%E2%80%8E%E2%80%8Ea%E2%80%8E%E2%80%8E%E2%80%8E%20e%E2%80%8Em%E2%80%8E%E2%80%8E%20J%E2%80%8Eo%C3%A3o%20Pes%E2%80%8Es%E2%80%8Eoa&utm_source=instagram&utm_medium=bio&utm_campaign=agendar-jp",
+          "https://wa.me/5583998446175?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20obter%20mais%20informa%C3%A7%C3%B5es%20para%20agendar%20uma%20consult",
       },
     ],
   },
@@ -256,7 +256,7 @@ export function Locations() {
                             href={
                               unit.customWppLink
                                 ? unit.customWppLink
-                                : `https://wa.me/5583996686436?text=Olá, gostaria de agendar no ${unit.name}`
+                                : `https://wa.me/5583998446175?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20obter%20mais%20informa%C3%A7%C3%B5es%20para%20agendar%20uma%20consult`
                             }
                             target="_blank"
                           >

@@ -47,7 +47,9 @@ export function FloatingButtons() {
               asChild
             >
               <Link
-                href="https://wa.me/5583998446175?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20obter%20mais%20informa%C3%A7%C3%B5es%20para%20agendar%20uma%20consulta"
+                href="https://wa.me/5583998446175?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%2
+0gostaria%20de%20obter%20mais%20informa%C3%A7%C3%B5es%20para%20agend
+ar%20uma%20consulta"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp"
@@ -57,7 +59,7 @@ export function FloatingButtons() {
             </Button>
           </TooltipTrigger>
           <TooltipContent side="left">
-            <p>Fale conosco no WhatsApp</p>
+            <p>Clique para conversar</p>
           </TooltipContent>
         </Tooltip>
       </div>

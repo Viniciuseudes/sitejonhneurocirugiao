@@ -13,7 +13,7 @@ interface HeroProps {
 
 // Link centralizado
 const WHATSAPP_LINK =
-  "https://wa.me/5581981044889?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es%20para%20agendar%20uma%20consulta%20com%20Dr.%20John%20Rocha";
+  "https://wa.me/5583998446175?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20obter%20mais%20informa%C3%A7%C3%B5es%20para%20agendar%20uma%20consult";
 
 export function Hero({
   imageUrl: _imageUrl,

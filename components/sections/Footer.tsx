@@ -136,7 +136,7 @@ export function Footer() {
             </h3>
             <div className="space-y-4">
               <a
-                href="https://wa.me/5583996686436"
+                href="5583998446175"
                 target="_blank"
                 className="flex items-center gap-4 p-4 rounded-xl bg-[#152838]/50 border border-[#2D4F6C]/20 hover:border-[#2D4F6C] hover:bg-[#2D4F6C]/10 transition-all group shadow-lg shadow-black/20"
                 aria-label="Agendar via WhatsApp"
